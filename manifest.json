@@ -2,7 +2,7 @@
   "name": "IRONKANG",
   "short_name": "IRONKANG",
   "description": "Elite Workout Tracker",
-  "start_url": "/",
+  "start_url": "/ironkang/"
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
