@@ -264,6 +264,10 @@
       background: var(--accent-soft); border-top: 1px solid var(--border-light);
       padding: 12px 14px;
     }
+    .tips-video {
+      width: 100%; max-width: 220px; height: auto; border-radius: 8px;
+      display: block; margin: 0 auto 12px; background: #111;
+    }
     .tips-text {
       font-size: 11px; color: var(--text-secondary); font-style: italic;
       line-height: 1.5; border-left: 2px solid var(--accent); padding-left: 10px;
@@ -509,38 +513,38 @@
           push: {
             name: "Push", subtitle: "Chest & Shoulders",
             exercises: [
-              { id: "incline-press", name: "Incline DB Press", sets: 4, min: 6, max: 10, startWeight: 45, tip: "Keep elbows at 45°. Lower until weights are level with chest. Drive through the pecs." },
-              { id: "shoulder-press", name: "Seated DB Shoulder Press", sets: 3, min: 8, max: 10, startWeight: 25, tip: "Avoid arching lower back. Full range of motion. Press straight up." },
-              { id: "flat-press", name: "Flat DB Press", sets: 3, min: 8, max: 12, startWeight: 40, tip: "Plant feet firmly. Squeeze shoulder blades together. Control the descent." },
-              { id: "lat-raise", name: "Lateral Raises", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Lead with elbows, not hands. Slight bend in arms. Stop at shoulder height." },
-              { id: "incline-fly", name: "Incline DB Fly", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Maintain slight elbow bend throughout. Feel the stretch at the bottom." },
-              { id: "rear-delt", name: "Rear Delt Fly", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Pull with the back of your shoulders. Squeeze at the top." },
-              { id: "tricep-ext", name: "Overhead Tricep Extension", sets: 3, min: 10, max: 12, startWeight: 20, tip: "Keep elbows tucked close to ears. Full stretch at bottom." },
-              { id: "skull-crushers", name: "Lying DB Skull Crushers", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Lower to temples, not forehead. Keep upper arms vertical." }
+              { id: "incline-press", name: "Incline DB Press", sets: 4, min: 6, max: 10, startWeight: 45, tip: "Keep elbows at 45°. Lower until weights are level with chest. Drive through the pecs.", video: "gifs/incline-press.mp4" },
+              { id: "shoulder-press", name: "Seated DB Shoulder Press", sets: 3, min: 8, max: 10, startWeight: 25, tip: "Avoid arching lower back. Full range of motion. Press straight up.", video: "gifs/shoulder-press.mp4" },
+              { id: "flat-press", name: "Flat DB Press", sets: 3, min: 8, max: 12, startWeight: 40, tip: "Plant feet firmly. Squeeze shoulder blades together. Control the descent.", video: "gifs/flat-press.mp4" },
+              { id: "lat-raise", name: "Lateral Raises", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Lead with elbows, not hands. Slight bend in arms. Stop at shoulder height.", video: "gifs/lat-raise.mp4" },
+              { id: "incline-fly", name: "Incline DB Fly", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Maintain slight elbow bend throughout. Feel the stretch at the bottom.", video: "gifs/incline-fly.mp4" },
+              { id: "rear-delt", name: "Rear Delt Fly", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Pull with the back of your shoulders. Squeeze at the top.", video: "gifs/rear-delt.mp4" },
+              { id: "tricep-ext", name: "Overhead Tricep Extension", sets: 3, min: 10, max: 12, startWeight: 20, tip: "Keep elbows tucked close to ears. Full stretch at bottom.", video: "gifs/tricep-ext.mp4" },
+              { id: "skull-crushers", name: "Lying DB Skull Crushers", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Lower to temples, not forehead. Keep upper arms vertical.", video: "gifs/skull-crushers.mp4" }
             ]
           },
           pull: {
             name: "Pull", subtitle: "Back & Biceps",
             exercises: [
-              { id: "db-row", name: "Single-Arm DB Row", sets: 4, min: 6, max: 10, startWeight: 35, tip: "Keep hips square. Pull toward hip, not chest. Squeeze at top." },
-              { id: "pullover", name: "DB Pullover", sets: 3, min: 10, max: 12, startWeight: 25, tip: "Keep slight elbow bend. Feel the lat stretch. Breathe in on the way down." },
-              { id: "chest-row", name: "Chest-Supported Row", sets: 3, min: 10, max: 12, startWeight: 30, tip: "Keep chest glued to bench. Squeeze shoulder blades at top." },
-              { id: "shrugs", name: "DB Shrugs", sets: 3, min: 12, max: 15, startWeight: 45, tip: "Lift straight up, not rolling. Hold at top for 1 second." },
-              { id: "incline-curl", name: "Incline Curl", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Keep elbows behind torso. Maximum bicep stretch at bottom." },
-              { id: "hammer-curl", name: "Hammer Curl", sets: 3, min: 10, max: 12, startWeight: 20, tip: "Palms facing inward throughout. Works brachialis and forearms." },
-              { id: "reverse-fly", name: "Reverse Fly", sets: 2, min: 15, max: 15, startWeight: 10, tip: "Same as rear delt fly. Extra rear delt volume for posture." }
+              { id: "db-row", name: "Single-Arm DB Row", sets: 4, min: 6, max: 10, startWeight: 35, tip: "Keep hips square. Pull toward hip, not chest. Squeeze at top.", video: "gifs/db-row.mp4" },
+              { id: "pullover", name: "DB Pullover", sets: 3, min: 10, max: 12, startWeight: 25, tip: "Keep slight elbow bend. Feel the lat stretch. Breathe in on the way down.", video: "gifs/pullover.mp4" },
+              { id: "chest-row", name: "Chest-Supported Row", sets: 3, min: 10, max: 12, startWeight: 30, tip: "Keep chest glued to bench. Squeeze shoulder blades at top.", video: "gifs/chest-row.mp4" },
+              { id: "shrugs", name: "DB Shrugs", sets: 3, min: 12, max: 15, startWeight: 45, tip: "Lift straight up, not rolling. Hold at top for 1 second.", video: "gifs/shrugs.mp4" },
+              { id: "incline-curl", name: "Incline Curl", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Keep elbows behind torso. Maximum bicep stretch at bottom.", video: "gifs/incline-curl.mp4" },
+              { id: "hammer-curl", name: "Hammer Curl", sets: 3, min: 10, max: 12, startWeight: 20, tip: "Palms facing inward throughout. Works brachialis and forearms.", video: "gifs/hammer-curl.mp4" },
+              { id: "reverse-fly", name: "Reverse Fly", sets: 2, min: 15, max: 15, startWeight: 10, tip: "Same as rear delt fly. Extra rear delt volume for posture.", video: "gifs/rear-delt.mp4" }
             ]
           },
           legs: {
             name: "Legs", subtitle: "Quads, Hams & Glutes",
             exercises: [
-              { id: "bulgarian", name: "Bulgarian Split Squat", sets: 4, min: 8, max: 10, startWeight: 30, tip: "Keep front shin vertical. Drop back knee straight down. Torso upright." },
-              { id: "rdl", name: "DB Romanian Deadlift", sets: 4, min: 8, max: 12, startWeight: 45, tip: "Push hips back, not down. Feel hamstring stretch. Soft knee bend." },
-              { id: "leg-curl", name: "Lying DB Leg Curl", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Squeeze DB between feet. Control the lowering phase." },
-              { id: "goblet", name: "Goblet Squat", sets: 3, min: 10, max: 12, startWeight: 45, tip: "Hold DB at chest. Push knees out. Deep squat." },
-              { id: "calf-raise", name: "Standing Calf Raise", sets: 3, min: 15, max: 20, startWeight: 45, tip: "Full stretch at bottom. Pause and squeeze at top." },
-              { id: "lunges", name: "DB Lunges", sets: 3, min: 10, max: 12, startWeight: 25, tip: "Long step forward. Keep torso upright. Push through front heel." },
-              { id: "hip-thrust", name: "DB Hip Thrust", sets: 3, min: 12, max: 15, startWeight: 45, tip: "Drive through heels. Squeeze glutes hard at top. Chin tucked." }
+              { id: "bulgarian", name: "Bulgarian Split Squat", sets: 4, min: 8, max: 10, startWeight: 30, tip: "Keep front shin vertical. Drop back knee straight down. Torso upright.", video: "gifs/bulgarian.mp4" },
+              { id: "rdl", name: "DB Romanian Deadlift", sets: 4, min: 8, max: 12, startWeight: 45, tip: "Push hips back, not down. Feel hamstring stretch. Soft knee bend.", video: "gifs/rdl.mp4" },
+              { id: "leg-curl", name: "Lying DB Leg Curl", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Squeeze DB between feet. Control the lowering phase.", video: "gifs/leg-curl.mp4" },
+              { id: "goblet", name: "Goblet Squat", sets: 3, min: 10, max: 12, startWeight: 45, tip: "Hold DB at chest. Push knees out. Deep squat.", video: "gifs/goblet.mp4" },
+              { id: "calf-raise", name: "Standing Calf Raise", sets: 3, min: 15, max: 20, startWeight: 45, tip: "Full stretch at bottom. Pause and squeeze at top.", video: "gifs/calf-raise.mp4" },
+              { id: "lunges", name: "DB Lunges", sets: 3, min: 10, max: 12, startWeight: 25, tip: "Long step forward. Keep torso upright. Push through front heel.", video: "gifs/lunges.mp4" },
+              { id: "hip-thrust", name: "DB Hip Thrust", sets: 3, min: 12, max: 15, startWeight: 45, tip: "Drive through heels. Squeeze glutes hard at top. Chin tucked.", video: "gifs/hip-thrust.mp4" }
             ]
           }
         }
@@ -551,32 +555,32 @@
           lowerA: {
             name: "Lower A", subtitle: "Glute & Inner Thigh",
             exercises: [
-              { id: "goblet-gf", name: "Goblet Squat", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Hold DB at chest. Push knees out over toes." },
-              { id: "rdl-gf", name: "DB Romanian Deadlift", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Hips back, hamstring stretch. Keep back flat." },
-              { id: "hip-thrust-gf", name: "DB Hip Thrust", sets: 3, min: 12, max: 15, startWeight: 20, tip: "Drive through heels. Maximum glute squeeze at top." },
-              { id: "sumo-squat", name: "Sumo Squat", sets: 3, min: 12, max: 15, startWeight: 20, tip: "Wide stance, toes out. Targets inner thighs and glutes." },
-              { id: "adduction", name: "Side-Lying Adduction", sets: 2, min: 15, max: 15, startWeight: 0, tip: "Bodyweight. Lift bottom leg. Feel inner thigh squeeze." }
+              { id: "goblet-gf", name: "Goblet Squat", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Hold DB at chest. Push knees out over toes.", video: "gifs/goblet.mp4" },
+              { id: "rdl-gf", name: "DB Romanian Deadlift", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Hips back, hamstring stretch. Keep back flat.", video: "gifs/rdl.mp4" },
+              { id: "hip-thrust-gf", name: "DB Hip Thrust", sets: 3, min: 12, max: 15, startWeight: 20, tip: "Drive through heels. Maximum glute squeeze at top.", video: "gifs/hip-thrust.mp4" },
+              { id: "sumo-squat", name: "Sumo Squat", sets: 3, min: 12, max: 15, startWeight: 20, tip: "Wide stance, toes out. Targets inner thighs and glutes.", video: "gifs/sumo-squat.mp4" },
+              { id: "adduction", name: "Side-Lying Adduction", sets: 2, min: 15, max: 15, startWeight: 0, tip: "Bodyweight. Lift bottom leg. Feel inner thigh squeeze.", video: "gifs/adduction.mp4" }
             ]
           },
           upper: {
             name: "Upper", subtitle: "Tricep Priority",
             exercises: [
-              { id: "floor-press", name: "DB Floor Press", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Elbows touch floor, pause, press. Great tricep builder." },
-              { id: "row-gf", name: "DB Row", sets: 3, min: 10, max: 12, startWeight: 15, tip: "One arm at a time. Pull to hip. Squeeze back." },
-              { id: "tricep-ext-gf", name: "Overhead Tricep Extension", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Keep elbows close to ears. Full stretch at bottom." },
-              { id: "kickback", name: "Tricep Kickback", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Upper arm parallel to floor. Squeeze at full extension." },
-              { id: "arnold", name: "DB Arnold Press", sets: 2, min: 10, max: 12, startWeight: 10, tip: "Rotate palms as you press. Works all three delt heads." },
-              { id: "curl-gf", name: "DB Curl", sets: 2, min: 12, max: 15, startWeight: 10, tip: "Full range. Squeeze bicep at top." }
+              { id: "floor-press", name: "DB Floor Press", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Elbows touch floor, pause, press. Great tricep builder.", video: "gifs/floor-press.mp4" },
+              { id: "row-gf", name: "DB Row", sets: 3, min: 10, max: 12, startWeight: 15, tip: "One arm at a time. Pull to hip. Squeeze back.", video: "gifs/db-row.mp4" },
+              { id: "tricep-ext-gf", name: "Overhead Tricep Extension", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Keep elbows close to ears. Full stretch at bottom.", video: "gifs/tricep-ext.mp4" },
+              { id: "kickback", name: "Tricep Kickback", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Upper arm parallel to floor. Squeeze at full extension.", video: "gifs/kickback.mp4" },
+              { id: "arnold", name: "DB Arnold Press", sets: 2, min: 10, max: 12, startWeight: 10, tip: "Rotate palms as you press. Works all three delt heads.", video: "gifs/arnold.mp4" },
+              { id: "curl-gf", name: "DB Curl", sets: 2, min: 12, max: 15, startWeight: 10, tip: "Full range. Squeeze bicep at top.", video: "gifs/curl.mp4" }
             ]
           },
           lowerB: {
             name: "Lower B", subtitle: "Quad & Glute",
             exercises: [
-              { id: "reverse-lunge", name: "Reverse Lunge", sets: 3, min: 10, max: 12, startWeight: 10, tip: "Step back, not forward. Easier on knees. Drive through front foot." },
-              { id: "sumo-dl", name: "Sumo DB Deadlift", sets: 3, min: 10, max: 12, startWeight: 20, tip: "Wide stance, toes out. Keep chest up. Drive through heels." },
-              { id: "bulgarian-gf", name: "Bulgarian Split Squat", sets: 3, min: 10, max: 12, startWeight: 10, tip: "Rear foot on bench. Keep torso upright." },
-              { id: "glute-bridge", name: "Glute Bridge", sets: 3, min: 15, max: 15, startWeight: 0, tip: "Drive through heels. Hold squeeze 2 seconds at top." },
-              { id: "calf-gf", name: "Standing Calf Raise", sets: 2, min: 15, max: 20, startWeight: 15, tip: "Full range of motion. Pause at top." }
+              { id: "reverse-lunge", name: "Reverse Lunge", sets: 3, min: 10, max: 12, startWeight: 10, tip: "Step back, not forward. Easier on knees. Drive through front foot.", video: "gifs/reverse-lunge.mp4" },
+              { id: "sumo-dl", name: "Sumo DB Deadlift", sets: 3, min: 10, max: 12, startWeight: 20, tip: "Wide stance, toes out. Keep chest up. Drive through heels.", video: "gifs/sumo-dl.mp4" },
+              { id: "bulgarian-gf", name: "Bulgarian Split Squat", sets: 3, min: 10, max: 12, startWeight: 10, tip: "Rear foot on bench. Keep torso upright.", video: "gifs/bulgarian.mp4" },
+              { id: "glute-bridge", name: "Glute Bridge", sets: 3, min: 15, max: 15, startWeight: 0, tip: "Drive through heels. Hold squeeze 2 seconds at top.", video: "gifs/glute-bridge.mp4" },
+              { id: "calf-gf", name: "Standing Calf Raise", sets: 2, min: 15, max: 20, startWeight: 15, tip: "Full range of motion. Pause at top.", video: "gifs/calf-raise.mp4" }
             ]
           }
         }
@@ -1460,7 +1464,10 @@
               </div>
             </div>
 
-            ${showTips ? `<div class="tips-panel animate-slide-down"><p class="tips-text">${ex.tip}</p></div>` : ''}
+            ${showTips ? `<div class="tips-panel animate-slide-down">
+                ${ex.video ? `<video src="${ex.video}" class="tips-video" autoplay loop muted playsinline></video>` : ''}
+                <p class="tips-text">${ex.tip}</p>
+              </div>` : ''}
 
             <div class="exercise-body">
               <div class="sets-header"><span>#</span><span>Weight (lb)</span><span>Reps</span><span>✓</span></div>
