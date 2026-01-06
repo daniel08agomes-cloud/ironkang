@@ -1465,7 +1465,7 @@
             </div>
 
             ${showTips ? `<div class="tips-panel animate-slide-down">
-                ${ex.video ? `<video src="${ex.video}" class="tips-video" autoplay loop muted playsinline></video>` : ''}
+                ${ex.video ? `<video src="${ex.video}" class="tips-video" autoplay loop muted playsinline preload="none" loading="lazy"></video>` : ''}
                 <p class="tips-text">${ex.tip}</p>
               </div>` : ''}
 
