@@ -1,36 +1,22 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/ironkang/',
+  base: './',
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
     // Optimize output with esbuild (faster than terser, no extra dependency)
     minify: 'esbuild',
     // Generate source maps for debugging
     sourcemap: false,
-    // Copy public assets
-    copyPublicDir: true,
-    // Rollup options
+    // Rollup options - inline everything into single HTML file
     rollupOptions: {
       output: {
-        manualChunks: undefined, // Single file output for simplicity
-        assetFileNames: (assetInfo) => {
-          // Keep video files in gifs folder
-          if (assetInfo.name.endsWith('.mp4')) {
-            return 'gifs/[name][extname]';
-          }
-          // Keep icons at root
-          if (assetInfo.name.match(/icon-\d+\.png/)) {
-            return '[name][extname]';
-          }
-          return 'assets/[name]-[hash][extname]';
-        },
+        manualChunks: undefined,
       },
     },
   },
-  // Specify public directory for static assets
-  publicDir: 'public',
+  // Don't use a separate public directory - keep everything at root
+  publicDir: false,
   // Server configuration for development
   server: {
     port: 3000,
