@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .claude/hooks/bump-sw-version.js 2>/dev/null || true",
+            "statusMessage": "Checking PWA cache version..."
+          }
+        ]
+      }
+    ]
+  }
+}

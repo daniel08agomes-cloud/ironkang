@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ironkang-v16';
+const CACHE_NAME = 'ironkang-v17';
 const urlsToCache = [
   '/',
   '/index.html',
