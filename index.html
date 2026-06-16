@@ -509,37 +509,37 @@
           push: {
             name: "Push", subtitle: "Chest & Shoulders",
             exercises: [
-              { id: "incline-press", name: "Incline DB Press", sets: 4, min: 6, max: 10, startWeight: 45, tip: "Keep elbows at 45°. Lower until weights are level with chest. Drive through the pecs." },
-              { id: "shoulder-press", name: "Seated DB Shoulder Press", sets: 3, min: 8, max: 10, startWeight: 25, tip: "Avoid arching lower back. Full range of motion. Press straight up." },
-              { id: "flat-press", name: "Flat DB Press", sets: 3, min: 8, max: 12, startWeight: 40, tip: "Plant feet firmly. Squeeze shoulder blades together. Control the descent." },
-              { id: "lat-raise", name: "Lateral Raises", sets: 3, min: 12, max: 15, startWeight: 10, tip: "Lead with elbows, not hands. Slight bend in arms. Stop at shoulder height." },
-              { id: "flat-fly", name: "Flat DB Fly", sets: 3, min: 10, max: 12, startWeight: 25, tip: "Maintain slight elbow bend throughout. Feel the stretch at the bottom." },
-              { id: "tricep-ext", name: "Overhead Tricep Extension", sets: 3, min: 10, max: 12, startWeight: 20, tip: "Keep elbows tucked close to ears. Full stretch at bottom." },
-              { id: "skull-crushers", name: "Lying DB Skull Crushers", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Lower to temples, not forehead. Keep upper arms vertical." }
+              { id: "flat-press", name: "DB Bench Press", repScheme: [15,12,10,8,8], startWeight: 40, tip: "Plant feet firmly. Squeeze shoulder blades together. Control the descent." },
+              { id: "incline-press", name: "Incline DB Press", repScheme: [10,10,8,8], startWeight: 45, tip: "Keep elbows at 45°. Lower until weights are level with chest. Drive through the pecs." },
+              { id: "shoulder-press", name: "Seated DB Shoulder Press", repScheme: [12,10,8], startWeight: 25, tip: "Avoid arching lower back. Full range of motion. Press straight up." },
+              { id: "lat-raise", name: "Lateral Raises", repScheme: [8,8,6,6], startWeight: 10, tip: "Lead with elbows, not hands. Slight bend in arms. Stop at shoulder height." },
+              { id: "tricep-kickback", name: "Tricep Kickback", repScheme: [8,8,6,6], startWeight: 0, tip: "Upper arm parallel to floor. Squeeze hard at full extension." },
+              { id: "band-tricep-pushdown", name: "Band Tricep Pushdown", repScheme: [20,20,20], startWeight: 0, tip: "Anchor band high, elbows pinned to your sides." }
             ]
           },
           pull: {
             name: "Pull", subtitle: "Back & Biceps",
             exercises: [
-              { id: "db-row", name: "Single-Arm DB Row", sets: 4, min: 6, max: 10, startWeight: 35, tip: "Keep hips square. Pull toward hip, not chest. Squeeze at top." },
-              { id: "pullover", name: "DB Pullover", sets: 3, min: 10, max: 12, startWeight: 25, tip: "Keep slight elbow bend. Feel the lat stretch. Breathe in on the way down." },
-              { id: "chest-row", name: "Chest-Supported Row", sets: 3, min: 10, max: 12, startWeight: 30, tip: "Keep chest glued to bench. Squeeze shoulder blades at top." },
-              { id: "shrugs", name: "DB Shrugs", sets: 3, min: 12, max: 15, startWeight: 45, tip: "Lift straight up, not rolling. Hold at top for 1 second." },
-              { id: "incline-curl", name: "Incline Curl", sets: 3, min: 10, max: 12, startWeight: 15, tip: "Keep elbows behind torso. Maximum bicep stretch at bottom." },
-              { id: "hammer-curl", name: "Hammer Curl", sets: 3, min: 10, max: 12, startWeight: 20, tip: "Palms facing inward throughout. Works brachialis and forearms." },
-              { id: "reverse-fly", name: "Reverse Fly", sets: 2, min: 15, max: 15, startWeight: 10, tip: "Same as rear delt fly. Extra rear delt volume for posture." }
+              { id: "pullup", name: "Pull-Ups", repScheme: [10,10,10], startWeight: 0, tip: "Band-assist to reach 10 reps if needed." },
+              { id: "chest-row", name: "Chest-Supported Row", repScheme: [15,12,10,8,8], startWeight: 30, tip: "Keep chest glued to bench. Squeeze shoulder blades at top." },
+              { id: "db-row", name: "Single-Arm DB Row", repScheme: [12,12,8,8], startWeight: 35, tip: "Keep hips square. Pull toward hip, not chest. Squeeze at top. Use lifting straps if grip fails before your back does." },
+              { id: "pullover", name: "DB Pullover", repScheme: [15,15,15], startWeight: 25, tip: "Keep slight elbow bend. Feel the lat stretch. Breathe in on the way down." },
+              { id: "incline-curl", name: "Incline Curl", repScheme: [12,12,6,6,6], startWeight: 15, tip: "Keep elbows behind torso. Maximum bicep stretch at bottom." },
+              { id: "curl-21s", name: "21s Bicep Curl", repScheme: [21,21,21], startWeight: 0, tip: "7 bottom-half + 7 top-half + 7 full reps = 21." },
+              { id: "band-face-pull", name: "Band Face Pull", sets: 3, min: 15, max: 20, startWeight: 0, tip: "Anchor the band at head height. Pull to your face and externally rotate at the end." }
             ]
           },
           legs: {
             name: "Legs", subtitle: "Quads, Hams & Glutes",
             exercises: [
-              { id: "bulgarian", name: "Bulgarian Split Squat", sets: 4, min: 8, max: 10, startWeight: 30, tip: "Keep front shin vertical. Drop back knee straight down. Torso upright." },
-              { id: "rdl", name: "DB Romanian Deadlift", sets: 4, min: 8, max: 12, startWeight: 45, tip: "Push hips back, not down. Feel hamstring stretch. Soft knee bend." },
-              { id: "nordic-curl", name: "Nordic Curl", sets: 3, min: 8, max: 10, startWeight: 0, tip: "Control the descent as long as possible. Explosive pull back up." },
-              { id: "goblet", name: "Goblet Squat", sets: 3, min: 10, max: 12, startWeight: 45, tip: "Hold DB at chest. Push knees out. Deep squat." },
-              { id: "calf-raise", name: "Standing Calf Raise", sets: 3, min: 15, max: 20, startWeight: 45, tip: "Full stretch at bottom. Pause and squeeze at top." },
-              { id: "lunges", name: "DB Lunges", sets: 3, min: 10, max: 12, startWeight: 25, tip: "Long step forward. Keep torso upright. Push through front heel." },
-              { id: "hip-thrust", name: "DB Hip Thrust", sets: 3, min: 12, max: 15, startWeight: 45, tip: "Drive through heels. Squeeze glutes hard at top. Chin tucked." }
+              { id: "db-squat", name: "DB Squat", repScheme: [10,10,10], startWeight: 0, tip: "Dumbbells racked on shoulders. Sit back, chest up." },
+              { id: "narrow-squat", name: "Narrow Squat", repScheme: [12,12,8,8], startWeight: 0, tip: "Feet close together, knees track forward. Builds quad stability." },
+              { id: "sumo-squat", name: "Sumo Squat", repScheme: [10,10,10], startWeight: 0, tip: "Wide stance, toes out. Push knees out, drive through heels." },
+              { id: "db-step-up", name: "DB Step-Up", repScheme: [10,8,6,6], startWeight: 0, tip: "Per leg. Drive through the lead heel, control the descent down." },
+              { id: "nordic-curl", name: "Nordic Curl", repScheme: [6,6,6], startWeight: 0, tip: "Control the descent as long as possible. Explosive pull back up." },
+              { id: "rdl", name: "Stiff-Legged Deadlift", repScheme: [12,10,8,8], startWeight: 45, tip: "Push hips back, not down. Feel hamstring stretch. Soft knee bend. Use lifting straps if grip fails before your back does." },
+              { id: "calf-raise", name: "Standing Calf Raise", repScheme: [25,25], startWeight: 45, tip: "Full stretch at bottom. Pause and squeeze at top." },
+              { id: "seated-calf", name: "Seated Calf Raise", repScheme: [12,12,12], startWeight: 0, tip: "DB on knees if no seated machine is available." }
             ]
           }
         }
@@ -593,6 +593,7 @@
       timerSeconds: 90,
       timerInitial: 90,
       timerRunning: false,
+      timerEndTime: null,
       timerInterval: null,
       autoStartTimer: true,
       showBackupReminder: false,
@@ -695,6 +696,7 @@
         profile: state.profile, currentDay: state.currentDay, currentSets: state.currentSets,
         progressedToday: state.progressedToday, workoutStarted: state.workoutStarted,
         timerSeconds: state.timerSeconds, timerInitial: state.timerInitial,
+        timerEndTime: state.timerEndTime,
         autoStartTimer: state.autoStartTimer, timestamp: Date.now()
       }));
     }
@@ -722,9 +724,21 @@
       state.currentSets = savedSession.currentSets || {};
       state.progressedToday = savedSession.progressedToday || {};
       state.workoutStarted = savedSession.workoutStarted || false;
-      state.timerSeconds = savedSession.timerSeconds || 90;
       state.timerInitial = savedSession.timerInitial || 90;
       state.autoStartTimer = savedSession.autoStartTimer !== undefined ? savedSession.autoStartTimer : true;
+      state.timerEndTime = savedSession.timerEndTime || null;
+      // Re-compute remaining seconds from absolute end time
+      if (savedSession.timerRunning && state.timerEndTime) {
+        const remaining = Math.max(0, Math.round((state.timerEndTime - Date.now()) / 1000));
+        if (remaining <= 0) {
+          state.timerSeconds = 0; state.timerRunning = false; state.timerEndTime = null;
+        } else {
+          state.timerSeconds = remaining; state.timerRunning = true;
+        }
+      } else {
+        state.timerSeconds = savedSession.timerSeconds || 90;
+        state.timerRunning = false;
+      }
       userData = loadCoreData(state.profile);
     }
 
@@ -951,32 +965,44 @@
       state.timerSeconds = seconds;
       state.timerInitial = seconds;
       state.timerRunning = false;
+      state.timerEndTime = null;
       if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
       saveSession();
       render();
     }
 
+    function startTimerInterval() {
+      if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
+      state.timerInterval = setInterval(() => {
+        const remaining = Math.max(0, Math.round((state.timerEndTime - Date.now()) / 1000));
+        state.timerSeconds = remaining;
+        if (remaining <= 0) {
+          state.timerRunning = false;
+          state.timerEndTime = null;
+          clearInterval(state.timerInterval);
+          state.timerInterval = null;
+          playBeep();
+          if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+          render();
+        } else {
+          updateTimerDisplay();
+        }
+        saveSession();
+      }, 500);
+    }
+
     function toggleTimer() {
-      if (state.timerSeconds === 0) state.timerSeconds = state.timerInitial;
-      state.timerRunning = !state.timerRunning;
       if (state.timerRunning) {
-        state.timerInterval = setInterval(() => {
-          state.timerSeconds--;
-          if (state.timerSeconds <= 0) {
-            state.timerSeconds = 0;
-            state.timerRunning = false;
-            clearInterval(state.timerInterval);
-            state.timerInterval = null;
-            playBeep();
-            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-            render(); // Full render when timer ends
-          } else {
-            updateTimerDisplay(); // Only update timer, not full page
-          }
-          saveSession();
-        }, 1000);
+        state.timerSeconds = Math.max(0, Math.round((state.timerEndTime - Date.now()) / 1000));
+        state.timerRunning = false;
+        state.timerEndTime = null;
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
       } else {
-        if (state.timerInterval) { clearInterval(state.timerInterval); state.timerInterval = null; }
+        if (state.timerSeconds === 0) state.timerSeconds = state.timerInitial;
+        state.timerEndTime = Date.now() + state.timerSeconds * 1000;
+        state.timerRunning = true;
+        startTimerInterval();
       }
       saveSession();
       render();
@@ -985,23 +1011,10 @@
     function startTimerIfAuto() {
       if (state.autoStartTimer && !state.timerRunning) {
         state.timerSeconds = state.timerInitial;
+        state.timerEndTime = Date.now() + state.timerInitial * 1000;
         state.timerRunning = true;
-        state.timerInterval = setInterval(() => {
-          state.timerSeconds--;
-          if (state.timerSeconds <= 0) {
-            state.timerSeconds = 0;
-            state.timerRunning = false;
-            clearInterval(state.timerInterval);
-            state.timerInterval = null;
-            playBeep();
-            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-            render(); // Full render when timer ends
-          } else {
-            updateTimerDisplay(); // Only update timer, not full page
-          }
-          saveSession();
-        }, 1000);
-        render(); // Initial render to show timer started
+        startTimerInterval();
+        render();
       }
     }
 
@@ -1200,9 +1213,10 @@
         const sets = state.currentSets[ex.id] || {};
         const weight = getCurrentWeight(ex);
         const setsArray = [];
-        
+        const baseCount = ex.repScheme ? ex.repScheme.length : ex.sets;
+
         // Collect all sets for this exercise (include sets with reps entered, even if not checked)
-        for (let i = 0; i < ex.sets; i++) {
+        for (let i = 0; i < baseCount; i++) {
           const s = sets[i];
           if (s && (s.done || s.reps > 0)) {
             totalSets++;
@@ -1215,7 +1229,7 @@
         // Also check for extra sets beyond default
         Object.keys(sets).forEach(idx => {
           const i = parseInt(idx);
-          if (i >= ex.sets && sets[i] && (sets[i].done || sets[i].reps > 0)) {
+          if (i >= baseCount && sets[i] && (sets[i].done || sets[i].reps > 0)) {
             totalSets++;
             const setWeight = sets[i].weight || weight;
             const setReps = sets[i].reps || 0;
@@ -1435,23 +1449,34 @@
         const currentWeight = getCurrentWeight(ex);
         const nextWeight = currentWeight + 5;
         const sets = state.currentSets[ex.id] || {};
-        
+        const loggedMax = Object.keys(sets).length > 0 ? Math.max(...Object.keys(sets).map(Number)) + 1 : 0;
+        const numRows = ex.repScheme
+          ? Math.max(ex.repScheme.length, loggedMax)
+          : Math.max(ex.sets, loggedMax);
+
         let allComplete = true;
-        for (let i = 0; i < ex.sets; i++) {
+        for (let i = 0; i < numRows; i++) {
           const s = sets[i];
-          if (!s || !s.done || (s.reps || 0) < ex.max) allComplete = false;
+          if (ex.repScheme) {
+            if (!s || !s.done) allComplete = false;
+          } else {
+            if (!s || !s.done || (s.reps || 0) < ex.max) allComplete = false;
+          }
         }
-        
+
         const isNewPR = isPR(ex.id, nextWeight);
         const hasPR = (userData.prs[ex.id] || 0) > 0 && currentWeight >= userData.prs[ex.id];
         const showTips = state.tipsVisible[ex.id];
+        const targetText = ex.repScheme
+          ? `Scheme: ${ex.repScheme.join('/')} reps`
+          : `Target: ${ex.min}-${ex.max} reps`;
 
         html += `
           <div class="exercise-card ${allComplete ? 'complete' : ''} animate-slide-up">
             <div class="exercise-header">
               <div style="flex:1;min-width:0;">
                 <div class="exercise-name">${ex.name} ${hasPR ? '🏆' : ''}</div>
-                <div class="exercise-target">Target: ${ex.min}-${ex.max} reps</div>
+                <div class="exercise-target">${targetText}</div>
               </div>
               <button class="tips-btn ${showTips ? 'active' : ''}" onclick="toggleTips('${ex.id}')">Tips</button>
               <div class="exercise-weight" onclick="adjustWeight('${ex.id}', ${currentWeight})">
@@ -1463,11 +1488,12 @@
 
             <div class="exercise-body">
               <div class="sets-header"><span>#</span><span>Weight (lb)</span><span>Reps</span><span>✓</span></div>
-              ${Array.from({ length: ex.sets }, (_, i) => {
+              ${Array.from({ length: numRows }, (_, i) => {
                 const s = sets[i] || { weight: currentWeight, reps: 0, done: false };
                 const w = s.weight || currentWeight;
                 const r = s.reps || 0;
                 const done = s.done || false;
+                const repPlaceholder = ex.repScheme ? ex.repScheme[i] || 0 : 0;
                 return `
                   <div class="set-row">
                     <div class="set-num">${i + 1}</div>
@@ -1478,7 +1504,7 @@
                     </div>
                     <div class="set-input-wrap">
                       <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'reps', -1, ${currentWeight})">−</button>
-                      <input type="number" class="set-input" value="${r || ''}" placeholder="0" onblur="updateSetNoRender('${ex.id}', ${i}, 'reps', parseInt(this.value)||0)">
+                      <input type="number" class="set-input" value="${r || ''}" placeholder="${repPlaceholder}" onblur="updateSetNoRender('${ex.id}', ${i}, 'reps', parseInt(this.value)||0)">
                       <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'reps', 1, ${currentWeight})">+</button>
                     </div>
                     <button class="set-check ${done ? 'done' : ''}" onclick="updateSet('${ex.id}', ${i}, 'done', ${!done})">${done ? '✓' : '•'}</button>
@@ -1488,7 +1514,7 @@
               <button class="add-set-btn" onclick="addSet('${ex.id}')">+ Add Set</button>
             </div>
 
-            ${allComplete ? `
+            ${allComplete && !ex.repScheme ? `
               <div style="padding:0 14px 14px;">
                 ${state.progressedToday[ex.id] ? `
                   <div style="background:var(--green-soft);border:1px solid var(--green);border-radius:12px;padding:12px;text-align:center;font-size:12px;font-weight:800;color:var(--green);">
@@ -1893,10 +1919,10 @@
         if (exercise) break;
       }
       if (!exercise) return;
-      
-      // Find next set index
+
       const sets = state.currentSets[exerciseId] || {};
-      const nextIdx = Math.max(...Object.keys(sets).map(Number), exercise.sets - 1) + 1;
+      const baseCount = exercise.repScheme ? exercise.repScheme.length : exercise.sets;
+      const nextIdx = Math.max(...Object.keys(sets).map(Number), baseCount - 1) + 1;
       const weight = getCurrentWeight(exercise);
       
       if (!state.currentSets[exerciseId]) state.currentSets[exerciseId] = {};
@@ -1912,6 +1938,29 @@
     // ============== INIT ==============
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+
+    // Re-sync timer when tab regains focus (browsers throttle setInterval in background)
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && state.timerRunning && state.timerEndTime) {
+        const remaining = Math.max(0, Math.round((state.timerEndTime - Date.now()) / 1000));
+        state.timerSeconds = remaining;
+        if (remaining <= 0) {
+          state.timerSeconds = 0;
+          state.timerRunning = false;
+          state.timerEndTime = null;
+          clearInterval(state.timerInterval);
+          state.timerInterval = null;
+          playBeep();
+          if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+        }
+        render();
+      }
+    });
+
+    // Restart timer interval if session was restored mid-countdown
+    if (state.timerRunning && state.timerEndTime) {
+      startTimerInterval();
     }
 
     checkForBackupInUrl();
