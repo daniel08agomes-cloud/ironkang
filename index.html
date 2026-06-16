@@ -25,13 +25,13 @@
       --text-secondary: #a1a1aa;
       --text-muted: #52525b;
       --accent: #dc2626;
+      --accent-dark: #b91c1c;
       --accent-glow: rgba(220,38,38,0.3);
       --accent-soft: rgba(220,38,38,0.1);
       --green: #22c55e;
       --green-soft: rgba(34,197,94,0.15);
       --orange: #f97316;
       --gold: #eab308;
-      --purple: #a855f7;
     }
 
     body {
@@ -97,10 +97,6 @@
       border-color: var(--accent); background: var(--accent-soft);
       color: var(--accent);
     }
-    .profile-btn.active.beatriz {
-      border-color: var(--purple); background: rgba(168,85,247,0.1);
-      color: var(--purple);
-    }
 
     /* Tabs / Bottom Nav */
     .bottom-nav {
@@ -141,9 +137,6 @@
     .day-btn.active {
       border-color: var(--accent); background: var(--accent-soft); color: var(--accent);
     }
-    .beatriz .day-btn.active {
-      border-color: var(--purple); background: rgba(168,85,247,0.1); color: var(--purple);
-    }
 
     /* Timer */
     .timer-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 14px; margin-bottom: 12px; }
@@ -157,7 +150,6 @@
       font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
     }
     .preset-btn.active { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
-    .beatriz .preset-btn.active { border-color: var(--purple); background: rgba(168,85,247,0.1); color: var(--purple); }
     .auto-label { display: flex; align-items: center; gap: 4px; font-size: 10px; color: var(--text-muted); cursor: pointer; }
     .auto-label input { width: 16px; height: 16px; accent-color: var(--accent); }
     .timer-body { display: flex; align-items: center; gap: 12px; }
@@ -165,14 +157,12 @@
     .timer-display.done { color: var(--green); }
     .timer-progress { flex: 1; height: 6px; background: var(--bg-card); border-radius: 3px; overflow: hidden; }
     .timer-bar { height: 100%; background: var(--accent); border-radius: 3px; transition: width 0.3s linear; }
-    .beatriz .timer-bar { background: var(--purple); }
     .timer-btn {
       width: 44px; height: 44px; border: none; border-radius: 50%;
       background: var(--accent); color: white; font-size: 16px;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
     }
     .timer-btn.running { background: #ef4444; }
-    .beatriz .timer-btn { background: var(--purple); }
 
     /* Exercise Card */
     .exercise-card {
@@ -180,22 +170,18 @@
       border-radius: 16px; overflow: hidden; margin-bottom: 12px;
     }
     .exercise-card.complete { border-color: var(--green); }
-    .beatriz .exercise-card.complete { border-color: var(--purple); }
     .exercise-header {
       display: flex; justify-content: space-between; align-items: center;
       padding: 14px 16px; border-bottom: 1px solid var(--border-light);
     }
     .exercise-name { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.3px; }
     .exercise-target { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-top: 2px; }
-    .beatriz .exercise-target { color: var(--purple); }
     .exercise-weight {
       padding: 8px 14px; border-radius: 10px; cursor: pointer;
       background: var(--accent-soft); transition: all 0.2s;
     }
     .exercise-weight:active { opacity: 0.7; }
-    .beatriz .exercise-weight { background: rgba(168,85,247,0.15); }
     .weight-value { font-size: 16px; font-weight: 900; color: var(--accent); }
-    .beatriz .weight-value { color: var(--purple); }
     .exercise-body { padding: 14px 16px; }
     .sets-header {
       display: grid; grid-template-columns: 32px 1fr 1fr 44px; gap: 10px;
@@ -220,7 +206,6 @@
       display: flex; align-items: center; justify-content: center;
     }
     .set-adj:active { background: var(--bg-card-hover); }
-    .beatriz .set-adj { color: var(--purple); }
     .set-input {
       flex: 1; min-width: 0; height: 100%; border: none; background: transparent;
       color: white; font-family: inherit; font-size: 16px; font-weight: 700;
@@ -235,7 +220,6 @@
       transition: all 0.15s;
     }
     .set-check.done { border-color: var(--green); background: var(--green); color: white; }
-    .beatriz .set-check.done { border-color: var(--purple); background: var(--purple); }
     .add-set-btn {
       width: 100%; padding: 10px; margin-top: 8px;
       border: 1px dashed var(--border); border-radius: 10px;
@@ -245,12 +229,11 @@
     }
     .progress-btn {
       width: 100%; padding: 12px; margin-top: 10px; border: none;
-      border-radius: 10px; background: linear-gradient(135deg, var(--accent), #b91c1c);
+      border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-dark));
       color: white; font-family: inherit; font-size: 12px; font-weight: 800;
       text-transform: uppercase; cursor: pointer;
     }
     .progress-btn.pr { background: linear-gradient(135deg, var(--gold), #ca8a04); color: black; }
-    .beatriz .progress-btn { background: linear-gradient(135deg, var(--purple), #7c3aed); }
 
     /* Tips Panel */
     .tips-btn {
@@ -298,7 +281,6 @@
       flex: 2; background: var(--accent); color: white;
     }
     .action-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    .beatriz .action-btn.primary { background: var(--purple); }
 
     /* Workout Selection */
     .workout-select { padding: 20px 0; }
@@ -352,7 +334,6 @@
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
     .mini-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 16px; text-align: center; }
     .mini-stat-value { font-size: 24px; font-weight: 900; color: var(--accent); }
-    .beatriz .mini-stat-value { color: var(--purple); }
     .mini-stat-label { font-size: 9px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-top: 4px; }
 
     /* Charts */
@@ -362,7 +343,6 @@
     .chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 100px; }
     .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; }
     .chart-bar { width: 100%; background: var(--accent); border-radius: 4px 4px 0 0; min-height: 4px; transition: height 0.3s; }
-    .beatriz .chart-bar { background: var(--purple); }
     .chart-bar-label { font-size: 8px; font-weight: 700; color: var(--text-muted); }
 
     /* History */
@@ -377,7 +357,6 @@
     .history-header:active { background: var(--bg-card-hover); }
     .history-title { font-size: 15px; font-weight: 900; text-transform: uppercase; font-style: italic; }
     .history-date { font-size: 10px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-top: 3px; }
-    .beatriz .history-date { color: var(--purple); }
     .history-badge { font-size: 9px; font-weight: 800; color: white; background: var(--bg-card); border: 1px solid var(--border); padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
     .history-arrow { color: var(--accent); transition: transform 0.3s; font-size: 12px; }
     .history-arrow.open { transform: rotate(180deg); }
@@ -385,7 +364,6 @@
     .history-exercise { padding: 12px 0; }
     .history-exercise + .history-exercise { border-top: 1px solid var(--border-light); }
     .history-ex-name { font-size: 12px; font-weight: 800; text-transform: uppercase; border-left: 3px solid var(--accent); padding-left: 10px; margin-bottom: 8px; }
-    .beatriz .history-ex-name { border-color: var(--purple); }
     .history-sets { display: flex; flex-wrap: wrap; gap: 6px; }
     .history-set {
       background: rgba(0,0,0,0.3); border: 1px solid var(--border);
@@ -466,7 +444,6 @@
     .modal-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
     .modal-stat { background: var(--bg-card); border-radius: 14px; padding: 14px; text-align: center; }
     .modal-stat-value { font-size: 24px; font-weight: 900; color: var(--accent); }
-    .beatriz .modal-stat-value { color: var(--purple); }
     .modal-stat-label { font-size: 9px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-top: 4px; }
     .modal-prs { background: rgba(234,179,8,0.1); border: 1px solid var(--gold); border-radius: 14px; padding: 14px; margin-bottom: 20px; }
     .modal-prs h3 { font-size: 12px; font-weight: 800; color: var(--gold); margin-bottom: 8px; }
@@ -504,7 +481,7 @@
     // ============== PROGRAMS ==============
     const PROGRAMS = {
       daniel: {
-        name: "Daniel", accent: "#dc2626",
+        name: "Daniel", accent: "#dc2626", accentDark: "#b91c1c",
         days: {
           push: {
             name: "Push", subtitle: "Chest & Shoulders",
@@ -545,7 +522,7 @@
         }
       },
       beatriz: {
-        name: "Beatriz", accent: "#a855f7",
+        name: "Beatriz", accent: "#a855f7", accentDark: "#7c3aed",
         days: {
           lowerA: {
             name: "Lower A", subtitle: "Glute & Inner Thigh",
@@ -581,7 +558,7 @@
         }
       },
       brother: {
-        name: "Rafael", accent: "#2563eb",
+        name: "Rafael", accent: "#2563eb", accentDark: "#1d4ed8",
         days: {
           push: {
             name: "Push", subtitle: "Chest & Shoulders",
@@ -784,6 +761,34 @@
     }
 
     // ============== UTILITIES ==============
+    function hexToRgba(hex, alpha) {
+      const h = hex.replace('#', '');
+      const r = parseInt(h.substring(0, 2), 16);
+      const g = parseInt(h.substring(2, 4), 16);
+      const b = parseInt(h.substring(4, 6), 16);
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    function darkenHex(hex, amount = 0.25) {
+      // Fallback for profiles that don't specify an explicit accentDark.
+      const h = hex.replace('#', '');
+      const channel = (i) => Math.round(parseInt(h.substring(i, i + 2), 16) * (1 - amount));
+      return '#' + [0, 2, 4].map(i => channel(i).toString(16).padStart(2, '0')).join('');
+    }
+
+    function applyProfileTheme(profile) {
+      // Drive every themed element from PROGRAMS[profile].accent so new
+      // profiles need zero CSS/UI changes - no more per-profile classes.
+      const p = PROGRAMS[profile] || {};
+      const accent = p.accent || '#dc2626';
+      const accentDark = p.accentDark || darkenHex(accent);
+      const root = document.documentElement.style;
+      root.setProperty('--accent', accent);
+      root.setProperty('--accent-dark', accentDark);
+      root.setProperty('--accent-soft', hexToRgba(accent, 0.1));
+      root.setProperty('--accent-glow', hexToRgba(accent, 0.3));
+    }
+
     function formatTime(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
     function getDateKey(d = new Date()) { return d.toISOString().split('T')[0]; }
     function formatDate(ts) {
@@ -857,16 +862,15 @@
     function generateBackupUrl() {
       // URL backup: core data + recent sessions only (to keep URL short)
       const thirtyDaysAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
-      
-      const danielSessions = loadSessions('daniel').filter(s => s.date > thirtyDaysAgo);
-      const beatrizSessions = loadSessions('beatriz').filter(s => s.date > thirtyDaysAgo);
-      
+
       const data = {
-        daniel: { ...loadCoreData('daniel'), workoutSessions: danielSessions },
-        beatriz: { ...loadCoreData('beatriz'), workoutSessions: beatrizSessions },
         exportDate: new Date().toISOString(),
         partial: true // Flag indicating this is a partial backup
       };
+      Object.keys(PROGRAMS).forEach(profile => {
+        const sessions = loadSessions(profile).filter(s => s.date > thirtyDaysAgo);
+        data[profile] = { ...loadCoreData(profile), workoutSessions: sessions };
+      });
       return window.location.origin + window.location.pathname + '?backup=' + btoa(encodeURIComponent(JSON.stringify(data)));
     }
 
@@ -876,13 +880,13 @@
       if (backupData) {
         try {
           const decoded = JSON.parse(decodeURIComponent(atob(backupData)));
-          if (decoded.daniel && decoded.beatriz) {
-            const msg = decoded.partial 
+          const profileKeys = Object.keys(PROGRAMS).filter(p => decoded[p]);
+          if (profileKeys.length > 0) {
+            const msg = decoded.partial
               ? `Restore backup from ${new Date(decoded.exportDate).toLocaleDateString()}?\n\n(This backup contains last 30 days of workout sessions)`
               : `Restore backup from ${new Date(decoded.exportDate).toLocaleDateString()}?`;
             if (confirm(msg)) {
-              restoreBackupData('daniel', decoded.daniel);
-              restoreBackupData('beatriz', decoded.beatriz);
+              profileKeys.forEach(p => restoreBackupData(p, decoded[p]));
               localStorage.setItem('ironkang_lastBackup', Date.now().toString());
               window.history.replaceState({}, '', window.location.pathname);
               showToast('Backup restored!');
@@ -917,7 +921,7 @@
     function exportData(profile) {
       // Full export includes sessions
       const data = loadAllData(profile);
-      const name = profile === 'daniel' ? 'Daniel' : 'Beatriz';
+      const name = PROGRAMS[profile]?.name || profile;
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
@@ -947,11 +951,8 @@
 
     function exportAllData() {
       // Full export includes all sessions
-      const data = { 
-        daniel: loadAllData('daniel'), 
-        beatriz: loadAllData('beatriz'), 
-        exportDate: new Date().toISOString() 
-      };
+      const data = { exportDate: new Date().toISOString() };
+      Object.keys(PROGRAMS).forEach(profile => { data[profile] = loadAllData(profile); });
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
@@ -968,9 +969,9 @@
       reader.onload = function(e) {
         try {
           const data = JSON.parse(e.target.result);
-          if (data.daniel && data.beatriz) {
-            restoreBackupData('daniel', data.daniel);
-            restoreBackupData('beatriz', data.beatriz);
+          const profileKeys = Object.keys(PROGRAMS).filter(p => data[p]);
+          if (profileKeys.length > 0) {
+            profileKeys.forEach(p => restoreBackupData(p, data[p]));
             userData = loadCoreData(state.profile);
             render();
             showToast('All data imported!');
@@ -982,15 +983,14 @@
     }
 
     function clearAllData() {
-      if (confirm('Delete ALL data for both profiles?')) {
+      if (confirm('Delete ALL data for all profiles?')) {
         if (confirm('This CANNOT be undone. Are you sure?')) {
-          // Clear both old and new format keys
-          localStorage.removeItem('ironkang_daniel');
-          localStorage.removeItem('ironkang_beatriz');
-          localStorage.removeItem('ironkang_daniel_core');
-          localStorage.removeItem('ironkang_daniel_sessions');
-          localStorage.removeItem('ironkang_beatriz_core');
-          localStorage.removeItem('ironkang_beatriz_sessions');
+          Object.keys(PROGRAMS).forEach(profile => {
+            // Clear both old and new format keys
+            localStorage.removeItem(`ironkang_${profile}`);
+            localStorage.removeItem(`ironkang_${profile}_core`);
+            localStorage.removeItem(`ironkang_${profile}_sessions`);
+          });
           localStorage.removeItem('ironkang_session');
           userData = { progressions: {}, history: [], completedWorkouts: [], prs: {} };
           state.currentSets = {};
@@ -1361,10 +1361,10 @@
     function render() {
       const app = document.getElementById('app');
       const program = PROGRAMS[state.profile];
-      const profileClass = state.profile === 'beatriz' ? 'beatriz' : '';
       const streak = getStreak();
 
-      app.className = profileClass;
+      applyProfileTheme(state.profile);
+      app.className = '';
 
       let html = `
         <div class="header">
@@ -1376,8 +1376,9 @@
         </div>
 
         <div class="profile-selector">
-          <button class="profile-btn ${state.profile === 'daniel' ? 'active' : ''}" onclick="switchProfile('daniel')">Daniel</button>
-          <button class="profile-btn ${state.profile === 'beatriz' ? 'active beatriz' : ''}" onclick="switchProfile('beatriz')">Beatriz</button>
+          ${Object.entries(PROGRAMS).map(([key, p]) => `
+            <button class="profile-btn ${state.profile === key ? 'active' : ''}" onclick="switchProfile('${key}')">${p.name}</button>
+          `).join('')}
         </div>
 
         ${state.showBackupReminder ? `
@@ -1848,14 +1849,27 @@
     }
 
     function renderSettingsView() {
-      const danielCore = loadCoreData('daniel');
-      const beatrizCore = loadCoreData('beatriz');
-      const danielSessions = loadSessions('daniel');
-      const beatrizSessions = loadSessions('beatriz');
-      const dStats = { ex: Object.keys(danielCore.progressions).length, sessions: danielSessions.length };
-      const bStats = { ex: Object.keys(beatrizCore.progressions).length, sessions: beatrizSessions.length };
       const backupDays = getLastBackupDays();
       const backupStatus = backupDays > 30 ? 'danger' : backupDays > 7 ? 'warning' : 'good';
+
+      const profileCards = Object.entries(PROGRAMS).map(([key, p]) => {
+        const core = loadCoreData(key);
+        const sessions = loadSessions(key);
+        const stats = { ex: Object.keys(core.progressions).length, sessions: sessions.length };
+        return `
+          <div class="backup-card">
+            <div class="backup-header">
+              <span class="backup-title">${p.name}</span>
+              <span class="backup-status">${stats.ex} exercises • ${stats.sessions} progressions</span>
+            </div>
+            <div class="backup-btns">
+              <button class="backup-btn primary" onclick="exportData('${key}')">📤 Export</button>
+              <button class="backup-btn secondary" onclick="document.getElementById('import-${key}').click()">📥 Import</button>
+              <input type="file" id="import-${key}" accept=".json" style="display:none" onchange="importData(event,'${key}')">
+            </div>
+          </div>
+        `;
+      }).join('');
 
       return `
         <div class="settings-section animate-fade">
@@ -1870,35 +1884,13 @@
           </div>
 
           <div class="section-title" style="margin-top:24px;">File Backup</div>
-          
-          <div class="backup-card">
-            <div class="backup-header">
-              <span class="backup-title">Daniel</span>
-              <span class="backup-status">${dStats.ex} exercises • ${dStats.sessions} progressions</span>
-            </div>
-            <div class="backup-btns">
-              <button class="backup-btn primary" onclick="exportData('daniel')">📤 Export</button>
-              <button class="backup-btn secondary" onclick="document.getElementById('import-d').click()">📥 Import</button>
-              <input type="file" id="import-d" accept=".json" style="display:none" onchange="importData(event,'daniel')">
-            </div>
-          </div>
 
-          <div class="backup-card">
-            <div class="backup-header">
-              <span class="backup-title">Beatriz</span>
-              <span class="backup-status">${bStats.ex} exercises • ${bStats.sessions} progressions</span>
-            </div>
-            <div class="backup-btns">
-              <button class="backup-btn primary" onclick="exportData('beatriz')">📤 Export</button>
-              <button class="backup-btn secondary" onclick="document.getElementById('import-b').click()">📥 Import</button>
-              <input type="file" id="import-b" accept=".json" style="display:none" onchange="importData(event,'beatriz')">
-            </div>
-          </div>
+          ${profileCards}
 
           <div class="backup-card">
             <div class="backup-header">
               <span class="backup-title">All Data</span>
-              <span class="backup-status">Both profiles</span>
+              <span class="backup-status">All profiles</span>
             </div>
             <div class="backup-btns">
               <button class="backup-btn primary" onclick="exportAllData()">📤 Export All</button>
