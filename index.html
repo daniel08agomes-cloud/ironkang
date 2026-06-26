@@ -621,7 +621,9 @@
       calendarYear: new Date().getFullYear(),
       selectedCalendarDate: null,
       expandedHistory: null,
-      tipsVisible: {}
+      tipsVisible: {},
+      progressedSets: {},
+      selectedTrendExercise: null
     };
 
     // ============== DATA ==============
@@ -643,8 +645,9 @@
         if (!data.completedWorkouts) data.completedWorkouts = [];
         if (!data.prs) data.prs = {};
         if (!data.history) data.history = [];
+        if (!data.setHistory) data.setHistory = {};
         return data;
-      } catch { return { progressions: {}, history: [], completedWorkouts: [], prs: {} }; }
+      } catch { return { progressions: {}, history: [], completedWorkouts: [], prs: {}, setHistory: {} }; }
     }
 
     function saveCoreData(profile, data) {
@@ -653,7 +656,8 @@
         progressions: data.progressions || {},
         history: data.history || [],
         completedWorkouts: data.completedWorkouts || [],
-        prs: data.prs || {}
+        prs: data.prs || {},
+        setHistory: data.setHistory || {}
       };
       localStorage.setItem(`ironkang_${profile}_core`, JSON.stringify(coreData));
     }
@@ -712,7 +716,8 @@
     function saveSession() {
       localStorage.setItem('ironkang_session', JSON.stringify({
         profile: state.profile, currentDay: state.currentDay, currentSets: state.currentSets,
-        progressedToday: state.progressedToday, workoutStarted: state.workoutStarted,
+        progressedToday: state.progressedToday, progressedSets: state.progressedSets,
+        workoutStarted: state.workoutStarted,
         timerSeconds: state.timerSeconds, timerInitial: state.timerInitial,
         timerEndTime: state.timerEndTime,
         autoStartTimer: state.autoStartTimer, timestamp: Date.now()
@@ -741,6 +746,7 @@
       state.currentDay = savedSession.currentDay;
       state.currentSets = savedSession.currentSets || {};
       state.progressedToday = savedSession.progressedToday || {};
+      state.progressedSets = savedSession.progressedSets || {};
       state.workoutStarted = savedSession.workoutStarted || false;
       state.timerInitial = savedSession.timerInitial || 90;
       state.autoStartTimer = savedSession.autoStartTimer !== undefined ? savedSession.autoStartTimer : true;
@@ -845,7 +851,8 @@
         progressions: data.progressions || {},
         history: data.history || [],
         completedWorkouts: data.completedWorkouts || [],
-        prs: data.prs || {}
+        prs: data.prs || {},
+        setHistory: data.setHistory || {}
       };
       localStorage.setItem(`ironkang_${profile}_core`, JSON.stringify(coreData));
       
@@ -992,8 +999,9 @@
             localStorage.removeItem(`ironkang_${profile}_sessions`);
           });
           localStorage.removeItem('ironkang_session');
-          userData = { progressions: {}, history: [], completedWorkouts: [], prs: {} };
+          userData = { progressions: {}, history: [], completedWorkouts: [], prs: {}, setHistory: {} };
           state.currentSets = {};
+          state.progressedSets = {};
           state.workoutStarted = false;
           render();
           showToast('All data cleared');
@@ -1078,6 +1086,7 @@
       state.currentDay = Object.keys(PROGRAMS[profile].days)[0];
       state.currentSets = {};
       state.progressedToday = {};
+      state.progressedSets = {};
       state.workoutStarted = false;
       userData = loadCoreData(profile);
       saveSession();
@@ -1107,6 +1116,7 @@
         state.workoutStarted = false;
         state.currentSets = {};
         state.progressedToday = {};
+        state.progressedSets = {};
         saveSession();
         render();
       }
@@ -1228,6 +1238,25 @@
       render();
     }
 
+    function handleSetProgress(exerciseId, setIdx, newWeight, exerciseName) {
+      if (!state.currentSets[exerciseId]) state.currentSets[exerciseId] = {};
+      if (!state.currentSets[exerciseId][setIdx]) {
+        state.currentSets[exerciseId][setIdx] = { weight: newWeight, reps: 0, done: false };
+      } else {
+        state.currentSets[exerciseId][setIdx].weight = newWeight;
+      }
+      if (!state.progressedSets[exerciseId]) state.progressedSets[exerciseId] = {};
+      state.progressedSets[exerciseId][setIdx] = newWeight;
+      showToast(`Set ${setIdx + 1}: ${exerciseName} → ${newWeight} lb`);
+      saveSession();
+      render();
+    }
+
+    function selectTrendExercise(exId) {
+      state.selectedTrendExercise = exId;
+      render();
+    }
+
     function undoLastProgression() {
       if (userData.history.length === 0) return;
       const last = userData.history[userData.history.length - 1];
@@ -1255,13 +1284,17 @@
         const weight = getCurrentWeight(ex);
         const setsArray = [];
         const baseCount = ex.repScheme ? ex.repScheme.length : ex.sets;
+        const prevSetHistory = ex.repScheme ? (userData.setHistory[ex.id] || {}) : null;
+        const perSetDefault = (i) => ex.repScheme
+          ? ((prevSetHistory.weights && prevSetHistory.weights[i]) || ex.startWeight)
+          : weight;
 
         // Collect all sets for this exercise (include sets with reps entered, even if not checked)
         for (let i = 0; i < baseCount; i++) {
           const s = sets[i];
           if (s && (s.done || s.reps > 0)) {
             totalSets++;
-            const setWeight = s.weight || weight;
+            const setWeight = s.weight || perSetDefault(i);
             const setReps = s.reps || 0;
             totalVolume += setWeight * setReps;
             setsArray.push({ weight: setWeight, reps: setReps });
@@ -1272,19 +1305,66 @@
           const i = parseInt(idx);
           if (i >= baseCount && sets[i] && (sets[i].done || sets[i].reps > 0)) {
             totalSets++;
-            const setWeight = sets[i].weight || weight;
+            const setWeight = sets[i].weight || perSetDefault(i);
             const setReps = sets[i].reps || 0;
             totalVolume += setWeight * setReps;
             setsArray.push({ weight: setWeight, reps: setReps });
           }
         });
-        
+
         if (setsArray.length > 0) {
           exerciseData.push({
             id: ex.id,
             name: ex.name,
             sets: setsArray
           });
+        }
+
+        if (ex.repScheme) {
+          // PR detection for repScheme exercises
+          let topWeight = 0;
+          for (let i = 0; i < ex.repScheme.length; i++) {
+            const s = sets[i];
+            if (s && s.done && (s.reps || 0) > 0) {
+              const w = s.weight || perSetDefault(i);
+              if (w > topWeight) topWeight = w;
+            }
+          }
+          Object.keys(sets).forEach(idx => {
+            const i = parseInt(idx);
+            if (i >= ex.repScheme.length) {
+              const s = sets[i];
+              if (s && s.done && (s.reps || 0) > 0) {
+                const w = s.weight || perSetDefault(i);
+                if (w > topWeight) topWeight = w;
+              }
+            }
+          });
+          if (topWeight > 0) {
+            const prevPR = userData.prs[ex.id] || 0;
+            if (topWeight > prevPR) {
+              userData.prs[ex.id] = topWeight;
+              userData.history.push({
+                date: Date.now(),
+                exerciseId: ex.id,
+                exerciseName: ex.name,
+                weight: prevPR,
+                newWeight: topWeight,
+                isPR: true
+              });
+            }
+          }
+
+          // Save per-set weight and pass status
+          const setWeights = [], setPassed = [];
+          for (let i = 0; i < ex.repScheme.length; i++) {
+            const s = sets[i];
+            const w = (s && s.weight) || perSetDefault(i);
+            const reps = s ? (s.reps || 0) : 0;
+            setWeights.push(w);
+            setPassed.push(!!(s && s.done && reps >= ex.repScheme[i]));
+          }
+          userData.setHistory[ex.id] = { weights: setWeights, passed: setPassed };
         }
       });
       
@@ -1316,9 +1396,10 @@
       
       state.currentSets = {};
       state.progressedToday = {};
+      state.progressedSets = {};
       state.workoutStarted = false;
       saveSession();
-      
+
       state.showModal = true;
       state.modalData = { totalSets, totalVolume, prsHit };
       render();
@@ -1495,6 +1576,7 @@
         const numRows = ex.repScheme
           ? Math.max(ex.repScheme.length, loggedMax)
           : Math.max(ex.sets, loggedMax);
+        const setHistory = ex.repScheme ? (userData.setHistory[ex.id] || {}) : null;
 
         let allComplete = true;
         for (let i = 0; i < numRows; i++) {
@@ -1510,8 +1592,25 @@
         const hasPR = (userData.prs[ex.id] || 0) > 0 && currentWeight >= userData.prs[ex.id];
         const showTips = state.tipsVisible[ex.id];
         const targetText = ex.repScheme
-          ? `Scheme: ${ex.repScheme.join('/')} reps`
+          ? `Pyramid: ${ex.repScheme.join('/')} reps`
           : `Target: ${ex.min}-${ex.max} reps`;
+
+        // Per-set suggestion buttons for repScheme
+        let perSetSuggestions = '';
+        if (ex.repScheme && setHistory && setHistory.passed) {
+          for (let i = 0; i < ex.repScheme.length; i++) {
+            if (setHistory.passed[i]) {
+              const prevW = (setHistory.weights && setHistory.weights[i]) || ex.startWeight;
+              const sugW = prevW + 5;
+              const alreadyProgressed = state.progressedSets[ex.id] && state.progressedSets[ex.id][i] !== undefined;
+              if (alreadyProgressed) {
+                perSetSuggestions += `<div style="background:var(--green-soft,rgba(34,197,94,0.1));border:1px solid var(--green,#22c55e);border-radius:10px;padding:10px;text-align:center;font-size:11px;font-weight:800;color:var(--green,#22c55e);margin-bottom:6px;">✓ Set ${i + 1} → ${state.progressedSets[ex.id][i]} lb</div>`;
+              } else {
+                perSetSuggestions += `<button class="progress-btn" onclick="handleSetProgress('${ex.id}', ${i}, ${sugW}, '${ex.name}')">↑ +5 lb to Set ${i + 1}? → ${sugW} lb</button>`;
+              }
+            }
+          }
+        }
 
         html += `
           <div class="exercise-card ${allComplete ? 'complete' : ''} animate-slide-up">
@@ -1521,9 +1620,11 @@
                 <div class="exercise-target">${targetText}</div>
               </div>
               <button class="tips-btn ${showTips ? 'active' : ''}" onclick="toggleTips('${ex.id}')">Tips</button>
+              ${!ex.repScheme ? `
               <div class="exercise-weight" onclick="adjustWeight('${ex.id}', ${currentWeight})">
                 <div class="weight-value">${currentWeight === 0 ? 'BW' : currentWeight + ' lb'}</div>
               </div>
+              ` : ''}
             </div>
 
             ${showTips ? `<div class="tips-panel animate-slide-down"><p class="tips-text">${ex.tip}</p></div>` : ''}
@@ -1531,8 +1632,11 @@
             <div class="exercise-body">
               <div class="sets-header"><span>#</span><span>Weight (lb)</span><span>Reps</span><span>✓</span></div>
               ${Array.from({ length: numRows }, (_, i) => {
-                const s = sets[i] || { weight: currentWeight, reps: 0, done: false };
-                const w = s.weight || currentWeight;
+                const defaultWeight = ex.repScheme
+                  ? ((setHistory && setHistory.weights && setHistory.weights[i]) || ex.startWeight)
+                  : currentWeight;
+                const s = sets[i] || { weight: defaultWeight, reps: 0, done: false };
+                const w = s.weight || defaultWeight;
                 const r = s.reps || 0;
                 const done = s.done || false;
                 const repPlaceholder = ex.repScheme ? ex.repScheme[i] || 0 : 0;
@@ -1540,14 +1644,14 @@
                   <div class="set-row">
                     <div class="set-num">${i + 1}</div>
                     <div class="set-input-wrap">
-                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'weight', -5, ${currentWeight})">−</button>
+                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'weight', -5, ${defaultWeight})">−</button>
                       <input type="number" class="set-input" value="${w}" onblur="updateSetNoRender('${ex.id}', ${i}, 'weight', parseFloat(this.value)||0)">
-                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'weight', 5, ${currentWeight})">+</button>
+                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'weight', 5, ${defaultWeight})">+</button>
                     </div>
                     <div class="set-input-wrap">
-                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'reps', -1, ${currentWeight})">−</button>
+                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'reps', -1, ${defaultWeight})">−</button>
                       <input type="number" class="set-input" value="${r || ''}" placeholder="${repPlaceholder}" onblur="updateSetNoRender('${ex.id}', ${i}, 'reps', parseInt(this.value)||0)">
-                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'reps', 1, ${currentWeight})">+</button>
+                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'reps', 1, ${defaultWeight})">+</button>
                     </div>
                     <button class="set-check ${done ? 'done' : ''}" onclick="updateSet('${ex.id}', ${i}, 'done', ${!done})">${done ? '✓' : '•'}</button>
                   </div>
@@ -1555,6 +1659,8 @@
               }).join('')}
               <button class="add-set-btn" onclick="addSet('${ex.id}')">+ Add Set</button>
             </div>
+
+            ${perSetSuggestions ? `<div style="padding:0 14px 14px;">${perSetSuggestions}</div>` : ''}
 
             ${allComplete && !ex.repScheme ? `
               <div style="padding:0 14px 14px;">
@@ -1609,24 +1715,86 @@
     }
 
     function renderStatsView(program) {
-      const totalVolume = userData.history.reduce((acc, h) => acc + (h.newWeight || 0), 0) * 10; // Rough estimate
+      const sessions = loadSessions(state.profile);
       const completed = userData.completedWorkouts || [];
       const thisMonth = completed.filter(d => d.startsWith(`${state.calendarYear}-${String(state.calendarMonth + 1).padStart(2, '0')}`)).length;
       const streak = getStreak();
+      const allExercises = Object.values(program.days).flatMap(d => d.exercises);
 
-      // Chart data - last 7 sessions
-      const recentHistory = [...userData.history].reverse().slice(0, 20);
-      const volumeByDay = {};
-      recentHistory.forEach(h => {
-        const day = getDateKey(new Date(h.date));
-        volumeByDay[day] = (volumeByDay[day] || 0) + (h.newWeight || 0);
+      // Real lifetime volume from sessions
+      let totalVolume = 0;
+      sessions.forEach(s => {
+        if (s.totalVolume) {
+          totalVolume += s.totalVolume;
+        } else if (s.exercises) {
+          s.exercises.forEach(ex => ex.sets.forEach(set => {
+            totalVolume += (set.weight || 0) * (set.reps || 0);
+          }));
+        }
       });
-      const chartDays = Object.entries(volumeByDay).slice(-7);
+
+      // Weekly volume chart from real sessions (newest-first → reverse for chrono, last 8 distinct days)
+      const volumeByDay = {};
+      [...sessions].reverse().forEach(s => {
+        const vol = s.totalVolume || (s.exercises || []).reduce((a, ex) => a + ex.sets.reduce((b, set) => b + (set.weight || 0) * (set.reps || 0), 0), 0);
+        volumeByDay[s.dateKey] = (volumeByDay[s.dateKey] || 0) + vol;
+      });
+      const chartDays = Object.entries(volumeByDay).slice(-8);
       const maxVol = Math.max(...chartDays.map(([, v]) => v), 1);
 
-      // Exercise progress
-      const exerciseIds = [...new Set(userData.history.map(h => h.exerciseId))];
-      const allExercises = Object.values(program.days).flatMap(d => d.exercises);
+      // Exercise trend chart
+      const trendExId = state.selectedTrendExercise || (sessions.length > 0 && sessions[0].exercises && sessions[0].exercises[0] ? sessions[0].exercises[0].id : (allExercises[0] ? allExercises[0].id : null));
+      const trendEx = trendExId ? allExercises.find(e => e.id === trendExId) : null;
+
+      const trendPoints = [];
+      if (trendExId) {
+        [...sessions].reverse().forEach(s => {
+          const exData = s.exercises && s.exercises.find(e => e.id === trendExId);
+          if (exData && exData.sets && exData.sets.length > 0) {
+            const topWeight = Math.max(...exData.sets.map(st => st.weight || 0));
+            const topSet = exData.sets.find(st => st.weight === topWeight) || exData.sets[0];
+            trendPoints.push({ date: s.dateKey, weight: topWeight, reps: topSet.reps || 0 });
+          }
+        });
+        if (trendPoints.length > 10) trendPoints.splice(0, trendPoints.length - 10);
+      }
+
+      let trendChartHtml = '';
+      if (trendExId) {
+        const selector = `<select style="width:100%;background:var(--bg-card);color:var(--text-primary);border:1px solid var(--border);border-radius:8px;padding:6px 8px;font-size:12px;margin-bottom:12px;" onchange="selectTrendExercise(this.value)">${allExercises.map(e => `<option value="${e.id}"${e.id === trendExId ? ' selected' : ''}>${e.name}</option>`).join('')}</select>`;
+        if (trendPoints.length >= 2) {
+          const weights = trendPoints.map(p => p.weight);
+          const minW = Math.min(...weights), maxW = Math.max(...weights);
+          const range = maxW - minW || 1;
+          const W = 300, H = 80, PAD = 8;
+          const pts = trendPoints.map((p, i) => ({
+            x: PAD + (i / (trendPoints.length - 1)) * (W - 2 * PAD),
+            y: PAD + (1 - (p.weight - minW) / range) * (H - 2 * PAD),
+            ...p
+          }));
+          const firstW = trendPoints[0].weight, lastW = trendPoints[trendPoints.length - 1].weight;
+          const delta = lastW - firstW;
+          trendChartHtml = `
+            <div class="chart-card">
+              <div class="chart-title"><div class="chart-dot"></div> Exercise Trend</div>
+              ${selector}
+              <div style="font-size:20px;font-weight:900;letter-spacing:-0.5px;margin-bottom:2px;">${firstW} → ${lastW} lb <span style="font-size:13px;color:${delta >= 0 ? 'var(--accent)' : '#ef4444'};font-weight:700;">(${delta >= 0 ? '+' : ''}${delta} lb)</span></div>
+              <div style="font-size:10px;color:var(--text-muted);margin-bottom:12px;">Top set across your last ${trendPoints.length} sessions</div>
+              <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:${H}px;">
+                <polyline points="${pts.map(p => `${p.x},${p.y}`).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+                ${pts.map(p => `<circle cx="${p.x}" cy="${p.y}" r="3" fill="var(--accent)"/>`).join('')}
+              </svg>
+              <div style="margin-top:8px;">${pts.map(p => `<div style="display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-bottom:1px solid var(--border-light);"><span style="color:var(--text-muted)">${p.date}</span><span style="font-weight:700">${p.weight} lb × ${p.reps}</span></div>`).join('')}</div>
+            </div>`;
+        } else {
+          trendChartHtml = `
+            <div class="chart-card">
+              <div class="chart-title"><div class="chart-dot"></div> Exercise Trend</div>
+              ${selector}
+              <div style="font-size:12px;color:var(--text-muted);text-align:center;padding:20px 0;">Not enough sessions yet</div>
+            </div>`;
+        }
+      }
 
       let html = `
         <div class="animate-fade">
@@ -1673,12 +1841,14 @@
               ${chartDays.map(([day, vol]) => `
                 <div class="chart-bar-wrap">
                   <div class="chart-bar" style="height:${(vol / maxVol) * 100}%"></div>
-                  <div class="chart-bar-label">${new Date(day).toLocaleDateString(undefined, { weekday: 'short' })}</div>
+                  <div class="chart-bar-label">${new Date(day + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'short' })}</div>
                 </div>
               `).join('')}
             </div>
           </div>
           ` : ''}
+
+          ${trendChartHtml}
 
           ${Object.keys(userData.prs || {}).length > 0 ? `
           <div class="chart-card">
