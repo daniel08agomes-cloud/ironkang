@@ -251,6 +251,10 @@
       font-size: 11px; color: var(--text-secondary); font-style: italic;
       line-height: 1.5; border-left: 2px solid var(--accent); padding-left: 10px;
     }
+    .tips-video {
+      width: 100%; border-radius: 8px; display: block;
+      max-height: 200px; object-fit: cover; margin-bottom: 10px;
+    }
 
     /* Complete Workout */
     .complete-btn {
@@ -1635,7 +1639,13 @@
               ` : ''}
             </div>
 
-            ${showTips ? `<div class="tips-panel animate-slide-down"><p class="tips-text">${ex.tip}</p></div>` : ''}
+            ${showTips ? `
+              <div class="tips-panel animate-slide-down">
+                <video class="tips-video" src="gifs/${ex.id}.mp4"
+                       muted loop playsinline autoplay preload="none"
+                       onerror="this.remove()"></video>
+                <p class="tips-text">${ex.tip}</p>
+              </div>` : ''}
 
             <div class="exercise-body">
               <div class="sets-header"><span>#</span><span>Weight (lb)</span><span>Reps</span><span>✓</span></div>
