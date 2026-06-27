@@ -1278,7 +1278,8 @@
     function completeWorkout() {
       const program = PROGRAMS[state.profile];
       const day = program.days[state.currentDay];
-      
+      const sessionStart = Date.now();
+
       let totalSets = 0, totalVolume = 0;
       const prsHit = [];
       const exerciseData = [];
@@ -1375,10 +1376,10 @@
         }
       });
       
-      // Get PRs from today
-      const today = getDateKey();
-      userData.history.filter(h => getDateKey(new Date(h.date)) === today && h.isPR)
+      // Collect only PRs recorded during this finish (not earlier same-day sessions)
+      userData.history.filter(h => h.date >= sessionStart && h.isPR)
         .forEach(h => prsHit.push({ name: h.exerciseName, weight: h.newWeight }));
+      const today = getDateKey();
       
       // Save full workout session
       const session = {
@@ -1821,7 +1822,7 @@
               <div class="mini-stat-label">Day Streak</div>
             </div>
             <div class="mini-stat">
-              <div class="mini-stat-value">${completed.length}</div>
+              <div class="mini-stat-value">${sessions.length}</div>
               <div class="mini-stat-label">Total Sessions</div>
             </div>
           </div>
