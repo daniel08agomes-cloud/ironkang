@@ -2158,7 +2158,7 @@
 
     // ============== INIT ==============
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
 
     // Re-sync timer when tab regains focus (browsers throttle setInterval in background)

@@ -1,8 +1,8 @@
-const CACHE_NAME = 'ironkang-v43';
+const CACHE_NAME = 'ironkang-v54';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json'
+  '/ironkang/',
+  '/ironkang/index.html',
+  '/ironkang/manifest.json'
 ];
 
 self.addEventListener('install', event => {
