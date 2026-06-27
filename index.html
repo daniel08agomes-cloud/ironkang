@@ -796,7 +796,11 @@
     }
 
     function formatTime(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
-    function getDateKey(d = new Date()) { return d.toISOString().split('T')[0]; }
+    function getDateKey(d = new Date()) {
+      return d.getFullYear() + '-' +
+        String(d.getMonth() + 1).padStart(2, '0') + '-' +
+        String(d.getDate()).padStart(2, '0');
+    }
     function formatDate(ts) {
       return new Date(ts).toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' });
     }
@@ -1355,16 +1359,19 @@
             }
           }
 
-          // Save per-set weight and pass status
-          const setWeights = [], setPassed = [];
-          for (let i = 0; i < ex.repScheme.length; i++) {
-            const s = sets[i];
-            const w = (s && s.weight) || perSetDefault(i);
-            const reps = s ? (s.reps || 0) : 0;
-            setWeights.push(w);
-            setPassed.push(!!(s && s.done && reps >= ex.repScheme[i]));
+          // Save per-set weight and pass status — only if at least one set was logged
+          const anyLogged = Object.values(sets).some(s => s && (s.done || s.reps > 0));
+          if (anyLogged) {
+            const setWeights = [], setPassed = [];
+            for (let i = 0; i < ex.repScheme.length; i++) {
+              const s = sets[i];
+              const w = (s && s.weight) || perSetDefault(i);
+              const reps = s ? (s.reps || 0) : 0;
+              setWeights.push(w);
+              setPassed.push(!!(s && s.done && reps >= ex.repScheme[i]));
+            }
+            userData.setHistory[ex.id] = { weights: setWeights, passed: setPassed };
           }
-          userData.setHistory[ex.id] = { weights: setWeights, passed: setPassed };
         }
       });
       
