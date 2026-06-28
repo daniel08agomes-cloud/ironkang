@@ -485,7 +485,7 @@
     // ============== PROGRAMS ==============
     const PROGRAMS = {
       daniel: {
-        name: "Daniel", accent: "#dc2626", accentDark: "#b91c1c",
+        name: "Daniel", accent: "#dc2626", accentDark: "#b91c1c", unit: 'lb',
         days: {
           push: {
             name: "Push", subtitle: "Chest & Shoulders",
@@ -526,7 +526,7 @@
         }
       },
       beatriz: {
-        name: "Beatriz", accent: "#a855f7", accentDark: "#7c3aed",
+        name: "Beatriz", accent: "#a855f7", accentDark: "#7c3aed", unit: 'lb',
         days: {
           lowerA: {
             name: "Lower A", subtitle: "Glute & Inner Thigh",
@@ -562,15 +562,15 @@
         }
       },
       brother: {
-        name: "Rafael", accent: "#2563eb", accentDark: "#1d4ed8",
+        name: "Rafael", accent: "#2563eb", accentDark: "#1d4ed8", unit: 'kg',
         days: {
           push: {
             name: "Push", subtitle: "Chest & Shoulders",
             exercises: [
-              { id: "flat-press", name: "DB Bench Press", repScheme: [15,12,10,8,8], startWeight: 40, tip: "Plant feet firmly. Squeeze shoulder blades together. Control the descent." },
-              { id: "incline-press", name: "Incline DB Press", repScheme: [10,10,8,8], startWeight: 45, tip: "Keep elbows at 45°. Lower until weights are level with chest. Drive through the pecs." },
-              { id: "shoulder-press", name: "Seated DB Shoulder Press", repScheme: [12,10,8], startWeight: 25, tip: "Avoid arching lower back. Full range of motion. Press straight up." },
-              { id: "lat-raise", name: "Lateral Raises", repScheme: [8,8,6,6], startWeight: 10, tip: "Lead with elbows, not hands. Slight bend in arms. Stop at shoulder height." },
+              { id: "flat-press", name: "DB Bench Press", repScheme: [15,12,10,8,8], startWeight: 17.5, tip: "Plant feet firmly. Squeeze shoulder blades together. Control the descent." },
+              { id: "incline-press", name: "Incline DB Press", repScheme: [10,10,8,8], startWeight: 20, tip: "Keep elbows at 45°. Lower until weights are level with chest. Drive through the pecs." },
+              { id: "shoulder-press", name: "Seated DB Shoulder Press", repScheme: [12,10,8], startWeight: 12.5, tip: "Avoid arching lower back. Full range of motion. Press straight up." },
+              { id: "lat-raise", name: "Lateral Raises", repScheme: [8,8,6,6], startWeight: 5, tip: "Lead with elbows, not hands. Slight bend in arms. Stop at shoulder height." },
               { id: "tricep-kickback", name: "Tricep Kickback", repScheme: [8,8,6,6], startWeight: 0, tip: "Upper arm parallel to floor. Squeeze hard at full extension." },
               { id: "band-tricep-pushdown", name: "Band Tricep Pushdown", repScheme: [20,20,20], startWeight: 0, tip: "Anchor band high, elbows pinned to your sides." }
             ]
@@ -579,10 +579,10 @@
             name: "Pull", subtitle: "Back & Biceps",
             exercises: [
               { id: "pullup", name: "Pull-Ups", repScheme: [10,10,10], startWeight: 0, tip: "Band-assist to reach 10 reps if needed." },
-              { id: "chest-row", name: "Chest-Supported Row", repScheme: [15,12,10,8,8], startWeight: 30, tip: "Keep chest glued to bench. Squeeze shoulder blades at top." },
-              { id: "db-row", name: "Single-Arm DB Row", repScheme: [12,12,8,8], startWeight: 35, tip: "Keep hips square. Pull toward hip, not chest. Squeeze at top. Use lifting straps if grip fails before your back does." },
-              { id: "pullover", name: "DB Pullover", repScheme: [15,15,15], startWeight: 25, tip: "Keep slight elbow bend. Feel the lat stretch. Breathe in on the way down." },
-              { id: "incline-curl", name: "Incline Curl", repScheme: [12,12,6,6,6], startWeight: 15, tip: "Keep elbows behind torso. Maximum bicep stretch at bottom." },
+              { id: "chest-row", name: "Chest-Supported Row", repScheme: [15,12,10,8,8], startWeight: 12.5, tip: "Keep chest glued to bench. Squeeze shoulder blades at top." },
+              { id: "db-row", name: "Single-Arm DB Row", repScheme: [12,12,8,8], startWeight: 15, tip: "Keep hips square. Pull toward hip, not chest. Squeeze at top. Use lifting straps if grip fails before your back does." },
+              { id: "pullover", name: "DB Pullover", repScheme: [15,15,15], startWeight: 12.5, tip: "Keep slight elbow bend. Feel the lat stretch. Breathe in on the way down." },
+              { id: "incline-curl", name: "Incline Curl", repScheme: [12,12,6,6,6], startWeight: 7.5, tip: "Keep elbows behind torso. Maximum bicep stretch at bottom." },
               { id: "curl-21s", name: "21s Bicep Curl", repScheme: [21,21,21], startWeight: 0, tip: "7 bottom-half + 7 top-half + 7 full reps = 21." },
               { id: "band-face-pull", name: "Band Face Pull", sets: 3, min: 15, max: 20, startWeight: 0, tip: "Anchor the band at head height. Pull to your face and externally rotate at the end." }
             ]
@@ -595,8 +595,8 @@
               { id: "sumo-squat", name: "Sumo Squat", repScheme: [10,10,10], startWeight: 0, tip: "Wide stance, toes out. Push knees out, drive through heels." },
               { id: "db-step-up", name: "DB Step-Up", repScheme: [10,8,6,6], startWeight: 0, tip: "Per leg. Drive through the lead heel, control the descent down." },
               { id: "nordic-curl", name: "Nordic Curl", repScheme: [6,6,6], startWeight: 0, tip: "Control the descent as long as possible. Explosive pull back up." },
-              { id: "rdl", name: "Stiff-Legged Deadlift", repScheme: [12,10,8,8], startWeight: 45, tip: "Push hips back, not down. Feel hamstring stretch. Soft knee bend. Use lifting straps if grip fails before your back does." },
-              { id: "calf-raise", name: "Standing Calf Raise", repScheme: [25,25], startWeight: 45, tip: "Full stretch at bottom. Pause and squeeze at top." },
+              { id: "rdl", name: "Stiff-Legged Deadlift", repScheme: [12,10,8,8], startWeight: 20, tip: "Push hips back, not down. Feel hamstring stretch. Soft knee bend. Use lifting straps if grip fails before your back does." },
+              { id: "calf-raise", name: "Standing Calf Raise", repScheme: [25,25], startWeight: 20, tip: "Full stretch at bottom. Pause and squeeze at top." },
               { id: "seated-calf", name: "Seated Calf Raise", repScheme: [12,12,12], startWeight: 0, tip: "DB on knees if no seated machine is available." }
             ]
           }
@@ -834,8 +834,15 @@
       return streak;
     }
 
+    function getWeightStep() {
+      return (PROGRAMS[state.profile].unit || 'lb') === 'kg' ? 2.5 : 5;
+    }
+    function getWeightUnit() {
+      return PROGRAMS[state.profile].unit || 'lb';
+    }
+
     function getCurrentWeight(exercise) {
-      return exercise.startWeight + ((userData.progressions[exercise.id] || 0) * 5);
+      return exercise.startWeight + ((userData.progressions[exercise.id] || 0) * getWeightStep());
     }
 
     function isPR(exerciseId, weight) {
@@ -1207,21 +1214,22 @@
     }
 
     function adjustWeight(exerciseId, currentWeight) {
-      const input = prompt(`Enter new weight (lbs):\n\nCurrent: ${currentWeight === 0 ? 'Bodyweight' : currentWeight + ' lbs'}`, currentWeight);
+      const unit = getWeightUnit();
+      const input = prompt(`Enter new weight (${unit}):\n\nCurrent: ${currentWeight === 0 ? 'Bodyweight' : currentWeight + ' ' + unit}`, currentWeight);
       if (input === null) return;
       const newWeight = parseFloat(input);
       if (isNaN(newWeight) || newWeight < 0) { showToast('Invalid weight', true); return; }
-      
+
       const program = PROGRAMS[state.profile];
       let startWeight = 0;
       for (const day of Object.values(program.days)) {
         const ex = day.exercises.find(e => e.id === exerciseId);
         if (ex) { startWeight = ex.startWeight; break; }
       }
-      
-      userData.progressions[exerciseId] = Math.round((newWeight - startWeight) / 5);
+
+      userData.progressions[exerciseId] = Math.round((newWeight - startWeight) / getWeightStep());
       saveData(state.profile, userData);
-      showToast(`Weight set to ${newWeight === 0 ? 'bodyweight' : newWeight + ' lbs'}`);
+      showToast(`Weight set to ${newWeight === 0 ? 'bodyweight' : newWeight + ' ' + unit}`);
       render();
     }
 
@@ -1235,9 +1243,9 @@
       });
       if (isNewPR) {
         userData.prs[exerciseId] = newWeight;
-        showToast(`🏆 NEW PR: ${exerciseName} at ${newWeight} lbs!`);
+        showToast(`🏆 NEW PR: ${exerciseName} at ${newWeight} ${getWeightUnit()}!`);
       } else {
-        showToast(`↑ ${exerciseName} progressed to ${newWeight} lbs`);
+        showToast(`↑ ${exerciseName} progressed to ${newWeight} ${getWeightUnit()}`);
       }
       saveData(state.profile, userData);
       // Mark as progressed so button doesn't show again
@@ -1255,7 +1263,7 @@
       }
       if (!state.progressedSets[exerciseId]) state.progressedSets[exerciseId] = {};
       state.progressedSets[exerciseId][setIdx] = newWeight;
-      showToast(`Set ${setIdx + 1}: ${exerciseName} → ${newWeight} lb`);
+      showToast(`Set ${setIdx + 1}: ${exerciseName} → ${newWeight} ${getWeightUnit()}`);
       saveSession();
       render();
     }
@@ -1268,7 +1276,7 @@
     function undoLastProgression() {
       if (userData.history.length === 0) return;
       const last = userData.history[userData.history.length - 1];
-      if (confirm(`Undo ${last.exerciseName}?\n\n${last.newWeight} → ${last.weight} lbs`)) {
+      if (confirm(`Undo ${last.exerciseName}?\n\n${last.newWeight} → ${last.weight} ${getWeightUnit()}`)) {
         userData.history.pop();
         const current = userData.progressions[last.exerciseId] || 0;
         if (current > 0) userData.progressions[last.exerciseId] = current - 1;
@@ -1582,7 +1590,9 @@
 
       day.exercises.forEach(ex => {
         const currentWeight = getCurrentWeight(ex);
-        const nextWeight = currentWeight + 5;
+        const step = getWeightStep();
+        const unit = getWeightUnit();
+        const nextWeight = currentWeight + step;
         const sets = state.currentSets[ex.id] || {};
         const loggedMax = Object.keys(sets).length > 0 ? Math.max(...Object.keys(sets).map(Number)) + 1 : 0;
         const numRows = ex.repScheme
@@ -1613,12 +1623,12 @@
           for (let i = 0; i < ex.repScheme.length; i++) {
             if (setHistory.passed[i]) {
               const prevW = (setHistory.weights && setHistory.weights[i]) || ex.startWeight;
-              const sugW = prevW + 5;
+              const sugW = prevW + step;
               const alreadyProgressed = state.progressedSets[ex.id] && state.progressedSets[ex.id][i] !== undefined;
               if (alreadyProgressed) {
-                perSetSuggestions += `<div style="background:var(--green-soft,rgba(34,197,94,0.1));border:1px solid var(--green,#22c55e);border-radius:10px;padding:10px;text-align:center;font-size:11px;font-weight:800;color:var(--green,#22c55e);margin-bottom:6px;">✓ Set ${i + 1} → ${state.progressedSets[ex.id][i]} lb</div>`;
+                perSetSuggestions += `<div style="background:var(--green-soft,rgba(34,197,94,0.1));border:1px solid var(--green,#22c55e);border-radius:10px;padding:10px;text-align:center;font-size:11px;font-weight:800;color:var(--green,#22c55e);margin-bottom:6px;">✓ Set ${i + 1} → ${state.progressedSets[ex.id][i]} ${unit}</div>`;
               } else {
-                perSetSuggestions += `<button class="progress-btn" onclick="handleSetProgress('${ex.id}', ${i}, ${sugW}, '${ex.name}')">↑ +5 lb to Set ${i + 1}? → ${sugW} lb</button>`;
+                perSetSuggestions += `<button class="progress-btn" onclick="handleSetProgress('${ex.id}', ${i}, ${sugW}, '${ex.name}')">↑ +${step} ${unit} to Set ${i + 1}? → ${sugW} ${unit}</button>`;
               }
             }
           }
@@ -1634,7 +1644,7 @@
               <button class="tips-btn ${showTips ? 'active' : ''}" onclick="toggleTips('${ex.id}')">Tips</button>
               ${!ex.repScheme ? `
               <div class="exercise-weight" onclick="adjustWeight('${ex.id}', ${currentWeight})">
-                <div class="weight-value">${currentWeight === 0 ? 'BW' : currentWeight + ' lb'}</div>
+                <div class="weight-value">${currentWeight === 0 ? 'BW' : currentWeight + ' ' + unit}</div>
               </div>
               ` : ''}
             </div>
@@ -1648,7 +1658,7 @@
               </div>` : ''}
 
             <div class="exercise-body">
-              <div class="sets-header"><span>#</span><span>Weight (lb)</span><span>Reps</span><span>✓</span></div>
+              <div class="sets-header"><span>#</span><span>Weight (${unit})</span><span>Reps</span><span>✓</span></div>
               ${Array.from({ length: numRows }, (_, i) => {
                 const defaultWeight = ex.repScheme
                   ? ((setHistory && setHistory.weights && setHistory.weights[i]) || ex.startWeight)
@@ -1662,9 +1672,9 @@
                   <div class="set-row">
                     <div class="set-num">${i + 1}</div>
                     <div class="set-input-wrap">
-                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'weight', -5, ${defaultWeight})">−</button>
+                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'weight', -${step}, ${defaultWeight})">−</button>
                       <input type="number" class="set-input" value="${w}" onblur="updateSetNoRender('${ex.id}', ${i}, 'weight', parseFloat(this.value)||0)">
-                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'weight', 5, ${defaultWeight})">+</button>
+                      <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'weight', ${step}, ${defaultWeight})">+</button>
                     </div>
                     <div class="set-input-wrap">
                       <button class="set-adj" onclick="adjustSetNoRender(event, '${ex.id}', ${i}, 'reps', -1, ${defaultWeight})">−</button>
@@ -1684,11 +1694,11 @@
               <div style="padding:0 14px 14px;">
                 ${state.progressedToday[ex.id] ? `
                   <div style="background:var(--green-soft);border:1px solid var(--green);border-radius:12px;padding:12px;text-align:center;font-size:12px;font-weight:800;color:var(--green);">
-                    ✓ Progressed to ${state.progressedToday[ex.id]} lb
+                    ✓ Progressed to ${state.progressedToday[ex.id]} ${unit}
                   </div>
                 ` : `
                   <button class="progress-btn ${isNewPR ? 'pr' : ''}" onclick="handleProgress('${ex.id}', '${ex.name}', ${currentWeight}, ${nextWeight}, ${isNewPR})">
-                    ${isNewPR ? '🏆 NEW PR! ' : '↑ '}Progress to ${nextWeight} lb
+                    ${isNewPR ? '🏆 NEW PR! ' : '↑ '}Progress to ${nextWeight} ${unit}
                   </button>
                 `}
               </div>
@@ -1733,6 +1743,7 @@
     }
 
     function renderStatsView(program) {
+      const unit = getWeightUnit();
       const sessions = loadSessions(state.profile);
       const completed = userData.completedWorkouts || [];
       const thisMonth = completed.filter(d => d.startsWith(`${state.calendarYear}-${String(state.calendarMonth + 1).padStart(2, '0')}`)).length;
@@ -1796,13 +1807,13 @@
             <div class="chart-card">
               <div class="chart-title"><div class="chart-dot"></div> Exercise Trend</div>
               ${selector}
-              <div style="font-size:20px;font-weight:900;letter-spacing:-0.5px;margin-bottom:2px;">${firstW} → ${lastW} lb <span style="font-size:13px;color:${delta >= 0 ? 'var(--accent)' : '#ef4444'};font-weight:700;">(${delta >= 0 ? '+' : ''}${delta} lb)</span></div>
+              <div style="font-size:20px;font-weight:900;letter-spacing:-0.5px;margin-bottom:2px;">${firstW} → ${lastW} ${unit} <span style="font-size:13px;color:${delta >= 0 ? 'var(--accent)' : '#ef4444'};font-weight:700;">(${delta >= 0 ? '+' : ''}${delta} ${unit})</span></div>
               <div style="font-size:10px;color:var(--text-muted);margin-bottom:12px;">Top set across your last ${trendPoints.length} sessions</div>
               <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:${H}px;">
                 <polyline points="${pts.map(p => `${p.x},${p.y}`).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>
                 ${pts.map(p => `<circle cx="${p.x}" cy="${p.y}" r="3" fill="var(--accent)"/>`).join('')}
               </svg>
-              <div style="margin-top:8px;">${pts.map(p => `<div style="display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-bottom:1px solid var(--border-light);"><span style="color:var(--text-muted)">${p.date}</span><span style="font-weight:700">${p.weight} lb × ${p.reps}</span></div>`).join('')}</div>
+              <div style="margin-top:8px;">${pts.map(p => `<div style="display:flex;justify-content:space-between;font-size:10px;padding:3px 0;border-bottom:1px solid var(--border-light);"><span style="color:var(--text-muted)">${p.date}</span><span style="font-weight:700">${p.weight} ${unit} × ${p.reps}</span></div>`).join('')}</div>
             </div>`;
         } else {
           trendChartHtml = `
@@ -1819,7 +1830,7 @@
           <div class="stat-card">
             <div class="stat-label">Lifetime Volume</div>
             <div class="stat-value">${Math.round(totalVolume / 1000)}K</div>
-            <div class="stat-unit">Pounds Lifted</div>
+            <div class="stat-unit">${unit === 'kg' ? 'Kilograms Lifted' : 'Pounds Lifted'}</div>
           </div>
 
           <div class="stats-grid">
@@ -1873,7 +1884,7 @@
             <div class="chart-title"><div class="chart-dot" style="background:var(--gold)"></div> Personal Records</div>
             ${Object.entries(userData.prs).map(([id, weight]) => {
               const ex = allExercises.find(e => e.id === id);
-              return ex ? `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-light);font-size:12px;"><span style="color:var(--text-secondary)">${ex.name}</span><span style="color:var(--gold);font-weight:800">${weight} lb 🏆</span></div>` : '';
+              return ex ? `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-light);font-size:12px;"><span style="color:var(--text-secondary)">${ex.name}</span><span style="color:var(--gold);font-weight:800">${weight} ${unit} 🏆</span></div>` : '';
             }).join('')}
           </div>
           ` : ''}
@@ -1927,7 +1938,7 @@
               <div style="font-size:14px;font-weight:900;text-transform:uppercase;">${workout.dayName}</div>
               <div style="font-size:10px;color:var(--text-muted);">${formatDate(workout.date)}</div>
             </div>
-            <div style="font-size:11px;color:var(--accent);font-weight:700;">${workout.totalSets} sets • ${(workout.totalVolume || 0).toLocaleString()} lb</div>
+            <div style="font-size:11px;color:var(--accent);font-weight:700;">${workout.totalSets} sets • ${(workout.totalVolume || 0).toLocaleString()} ${getWeightUnit()}</div>
           </div>
           ${workout.exercises.map(ex => `
             <div style="padding:10px 0;border-top:1px solid var(--border-light);">
@@ -1968,7 +1979,7 @@
           <div class="undo-card">
             <div class="undo-info">
               <span class="undo-label">Last Progression</span>
-              ${lastEntry.exerciseName} → ${lastEntry.newWeight} lb
+              ${lastEntry.exerciseName} → ${lastEntry.newWeight} ${getWeightUnit()}
             </div>
             <button class="undo-btn" onclick="undoLastProgression()">↩ Undo</button>
           </div>
@@ -2016,7 +2027,7 @@
                       ${ex.sets.map((s, i) => `
                         <div class="history-set">
                           <span style="color:var(--accent);font-weight:800;">${i + 1}</span>
-                          <span style="margin-left:6px;">${s.weight}lb × ${s.reps}</span>
+                          <span style="margin-left:6px;">${s.weight} ${getWeightUnit()} × ${s.reps}</span>
                         </div>
                       `).join('')}
                     </div>
@@ -2024,7 +2035,7 @@
                 `).join('')}
                 <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border-light);display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);">
                   <span>Total Volume</span>
-                  <span style="font-weight:800;color:var(--accent);">${volume.toLocaleString()} lb</span>
+                  <span style="font-weight:800;color:var(--accent);">${volume.toLocaleString()} ${getWeightUnit()}</span>
                 </div>
               </div>
             ` : ''}
@@ -2122,7 +2133,7 @@
               <div class="modal-prs">
                 <h3>🏆 New Personal Records!</h3>
                 <ul style="list-style:none;">
-                  ${prsHit.map(pr => `<li>${pr.name}: ${pr.weight} lb</li>`).join('')}
+                  ${prsHit.map(pr => `<li>${pr.name}: ${pr.weight} ${getWeightUnit()}</li>`).join('')}
                 </ul>
               </div>
             ` : ''}
